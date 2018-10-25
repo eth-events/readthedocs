@@ -2,11 +2,15 @@ Index endpoints
 ======================================
 
 Eth.events currently has 4 endpoints for the different entities on the Ethereum blockchain:
+.. TODO fix endpoints
 
 - `block` 
 - `tx`
 - `log`
 - `event`
+- `call`
+- `contract`
+- `token`
 
 Searches on the eth.events index can address a specific endpoint, so that the endpoint itself
 already functions as a filter for the specified entity.
@@ -32,3 +36,6 @@ The following chapters will document the available entities and explain it's pro
    tx
    log
    event
+   call
+   contract
+   token

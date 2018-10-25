@@ -12,6 +12,7 @@ Object schema
 - `event`: `String` - The event name.
 - `transactionIndex`: `Number` - integer of the transactions index position event was created from.
 - `transactionHash`: `String`- hash of the transactions this event was created from.
+- `probability`: `Float` - the truthness of this event. 1.0 is the best.
 
 
 Event arguments
