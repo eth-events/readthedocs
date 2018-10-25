@@ -38,6 +38,10 @@ advanced usage and a graphical UI we recommend using
 copy-pasteable commands for ``HTTPie`` throughout the tutorial, so if you
 want to follow along, it is advisable to install the software first.
 
+You also will need a registered eth.events API-Account in order to run the 
+REST calls. The account will be used in the following tutorial as ``$myuser``
+and ``$mypassword``. Please replace the variables with your user and password.
+
 Create an eth.events query step-by-step
 ---------------------------------------
 
@@ -56,7 +60,7 @@ no particular order.
 
 .. code:: bash
 
-  http GET https://public.eth.events/ethereum/event/_search -a demouser:demouser
+  http GET https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
 
 The returned JSON starts with meta-information about the processing of
 the query (not shown here).
@@ -187,7 +191,7 @@ Execute the request with:
 
   .. code:: bash
 
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_contract.json | http POST https://public.eth.events/ethereum/event/_search -a demouser:demouser
+    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_contract.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -280,7 +284,7 @@ Execute the request with:
 
   .. code:: bash
 
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_type.json | http POST https://public.eth.events/ethereum/event/_search -a demouser:demouser
+    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_type.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -338,7 +342,7 @@ Execute the request with:
 
   .. code:: bash
 
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_sorted.json | http POST https://public.eth.events/ethereum/event/_search -a demouser:demouser
+    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_sorted.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
