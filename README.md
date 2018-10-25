@@ -20,3 +20,6 @@ After building the documentation, to serve it locally, execute the following in 
 	cd _build/html
 	python3 -m http.server 8080
 	# then in your browser, visit http://localhost:8080
+
+# License
+Please see LICENSE file.
