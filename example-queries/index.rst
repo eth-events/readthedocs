@@ -19,7 +19,7 @@ This requires no body.
 
 .. code:: bash
 
-    GET ethereum/block/0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd
+    GET /ethereum/ethereum/mainnet/block/0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd
 
 
 Select by block number
@@ -31,7 +31,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/block/_search
+      POST /ethereum/ethereum/mainnet/search/block
 
 JSON body:
 
@@ -43,7 +43,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/by_blocknumber.json | http POST https://public.eth.events/ethereum/block/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/by_blocknumber.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/block/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -61,7 +61,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-    POST /ethereum/block/_search
+    POST /ethereum/ethereum/mainnet/block/search
 
 JSON body:
 
@@ -73,7 +73,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/empty_blocks.json | http POST https://public.eth.events/ethereum/block/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/empty_blocks.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/block/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -92,7 +92,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/block/_search
+      POST /ethereum/ethereum/mainnet/block/search
 
 JSON body:
 
@@ -104,7 +104,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/last_5_sorted.json | http POST https://public.eth.events/ethereum/block/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/last_5_sorted.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/block/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -126,7 +126,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/tx/_search
+      POST /ethereum/ethereum/mainnet/tx/search
 
 JSON body:
 
@@ -138,7 +138,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_block_hash.json | http POST https://public.eth.events/ethereum/tx/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_block_hash.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/tx/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -160,7 +160,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/tx/_search
+      POST /ethereum/ethereum/mainnet/tx/search
 
 JSON body:
 
@@ -172,7 +172,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_blocknumber_range.json | http POST https://public.eth.events/ethereum/tx/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_blocknumber_range.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/tx/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -191,7 +191,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/tx/_search
+      POST /ethereum/ethereum/mainnet/tx/search
 
 JSON body:
 
@@ -203,7 +203,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_from_or_to_address.json | http POST https://public.eth.events/ethereum/tx/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_from_or_to_address.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/tx/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -222,7 +222,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/tx/_search
+      POST /ethereum/ethereum/mainnet/tx/search
 
 JSON body:
 
@@ -234,7 +234,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_tx_hash.json | http POST https://public.eth.events/ethereum/tx/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_tx_hash.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/tx/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -242,34 +242,6 @@ To save the JSON body to disk in the UNIX terminal, type:
 
   curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_tx_hash.json
 
-
-Create link for tx in block document
--------------------------------------
-
-Given a block document
-
-.. code:: json
-
-    {
-                    ...
-                    "_type": "block",
-                    "_id": "0x0077065fa4f03a4ab28ba52bca5b2d56b5f70de2f0dc06adbc586ada7e8a2f7a",
-                    "_source": {
-                        ...    
-                        "transactions": [
-                            "0xc7b58c58a019479107d93941d044a9ffa9873c41437458eedcf889efe25738b8",
-                            "0x14829930e553466a27fabea994e71420333dfa2f3214e0e148ce49b427191dac",
-                            ...
-                        ],
-                        ...
-                    }
-                }
-
-you can GET any of the enclosed tx via this link
-
-.. code:: bash
-
-    GET ethereum/tx/0xc7b58c58a019479107d93941d044a9ffa9873c41437458eedcf889efe25738b8?routing=0x0
 
 Log
 ~~~
@@ -284,7 +256,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/log/_search
+      POST /ethereum/ethereum/mainnet/log/search
 
 JSON body:
 
@@ -296,7 +268,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_causing_tx_sender.json | http POST https://public.eth.events/ethereum/log/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_causing_tx_sender.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/log/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -315,7 +287,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/log/_search
+      POST /ethereum/ethereum/mainnet/log/search
 
 JSON body:
 
@@ -327,7 +299,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_emitting_contract.json | http POST https://public.eth.events/ethereum/log/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_emitting_contract.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/log/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -346,7 +318,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/log/_search
+      POST /ethereum/ethereum/mainnet/log/search
 
 JSON body:
 
@@ -358,7 +330,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_topic_signature.json | http POST https://public.eth.events/ethereum/log/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_topic_signature.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/log/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -378,7 +350,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/log/_search
+      POST /ethereum/ethereum/mainnet/log/search
 
 JSON body:
 
@@ -390,7 +362,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_txhash.json | http POST https://public.eth.events/ethereum/log/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_txhash.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/log/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -410,7 +382,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/event/_search
+      POST /ethereum/ethereum/mainnet/event/search
 
 JSON body:
 
@@ -422,7 +394,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/event/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -440,7 +412,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/event/_search
+      POST /ethereum/ethereum/mainnet/event/search
 
 JSON body:
 
@@ -452,7 +424,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/event/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -472,7 +444,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/event/_search
+      POST /ethereum/ethereum/mainnet/event/search
 
 JSON body:
 
@@ -484,7 +456,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/event/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -507,7 +479,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/block,tx/_search
+      POST /ethereum/ethereum/mainnet/block,tx/search
 
 JSON body:
 
@@ -519,7 +491,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/find_entity_by_hash.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/find_entity_by_hash.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/event/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -539,7 +511,7 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/block/_search
+      POST /ethereum/ethereum/mainnet/block/search
 
 JSON body:
 
@@ -551,7 +523,7 @@ Execute the request with:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/get_tx_and_latest_block.json | http POST https://public.eth.events/ethereum/block/_search -a $myuser:$mypassword
+  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/get_tx_and_latest_block.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/block/search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
