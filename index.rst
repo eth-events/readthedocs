@@ -18,7 +18,7 @@ If you are new to Elasticsearch and eth.events, you first should:
 - Leverage our :doc:`example queries </example-queries/index>` and build your own queries.  
 - Build a simple :doc:`web app </tutorials/block-explorer>` querying and displaying blockchain data.
 
-Please also visit our main `Website <https://www.eth.events>`__ or in case you have any further questions.
+Please also visit our main `Website <https://eth.events>`__ or in case you have any further questions.
 
 .. toctree::
    :maxdepth: 2
