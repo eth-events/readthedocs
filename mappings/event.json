@@ -1,117 +1,119 @@
 {
-    "index_patterns": [
-        "*-event"
-    ],
-    "settings": {
-        "number_of_shards": 16,
-        "number_of_replicas": 1
-    },
-    "mappings": {
-        "event": {
-            "dynamic": "false",
-            "_all": {
-                "enabled": false
-            },
-            "properties": {
-                "address": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "args": {
-                    "type": "nested",
-                    "properties": {
-                        "name": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        },
-                        "pos": {
-                            "type": "long"
-                        },
-                        "value": {
-                            "properties": {
-                                "hex": {
-                                    "type": "keyword",
-                                    "ignore_above": 256
-                                },
-                                "num": {
-                                    "type": "long"
-                                },
-                                "scaled": {
-                                    "type": "double"
-                                },
-                                "type": {
-                                    "type": "keyword",
-                                    "ignore_above": 256
-                                }
-                            }
-                        }
-                    }
-                },
-                "probability": {
-                    "type": "double"
-                },
-                "id": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "blockHash": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "blockNumber": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "error": {
-                    "type": "text",
-                    "fields": {
-                        "keyword": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "logIndex": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "event": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "timestamp": {
-                    "type": "date"
-                },
-                "transactionHash": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "transactionIndex": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                }
-            }
-        }
-    }
+	"index_patterns": [
+		"*-event"
+	],
+	"settings": {
+		"number_of_shards": 16,
+		"number_of_replicas": 1
+	},
+	"mappings": {
+		"event": {
+			"dynamic": "false",
+			"properties": {
+				"address": {
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"args": {
+					"type": "nested",
+					"properties": {
+						"name": {
+							"type": "keyword",
+							"ignore_above": 256
+						},
+						"pos": {
+							"type": "long"
+						},
+						"value": {
+							"properties": {
+								"hex": {
+									"type": "keyword",
+									"ignore_above": 256
+								},
+								"num": {
+									"type": "long"
+								},
+								"scaled": {
+									"type": "double"
+								},
+								"type": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						}
+					}
+				},
+				"probability": {
+					"type": "double"
+				},
+				"id": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"blockHash": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"blockNumber": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"error": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"logIndex": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"event": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"timestamp": {
+					"type": "date"
+				},
+				"transactionHash": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"transactionIndex": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				}
+			}
+		}
+	}
 }

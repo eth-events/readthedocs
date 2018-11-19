@@ -2,8 +2,10 @@ Example queries
 ===============
 
 The following queries are meant to be a building block for
-your own eth.events queries.  
+your own eth.events queries.
 
+You also will need a registered eth.events API-Account in order to run the 
+REST calls. Keep in mind to replace the ``$mytoken`` variable in the ``cURL`` commands with your personal API token.
 
 .. contents:: 
         :local: 
@@ -19,37 +21,57 @@ This requires no body.
 
 .. code:: bash
 
-    GET /ethereum/ethereum/mainnet/block/0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd
+    GET /ethereum/ethereum/mainnet/es/block/0xf44f60a66257d1c6c8afd2a64aaeb306d9c471d5d38b6dc277811455192ecee1/
 
 
 Select by block number
 ----------------------
 
-The results will contain only the block with the given block `number`.
+The results will contain only number selected with the given term.
 
 HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/search/block
+      POST /ethereum/ethereum/mainnet/es/block/search/
 
 JSON body:
 
-.. literalinclude:: block/by_blocknumber.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": {
+          "term": {
+            "number.num": 6600000
+          }
+        }
+      }
+    },
+    "_source": ["number.num"]
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/by_blocknumber.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/block/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/by_blocknumber.json
+  curl -X POST \
+  https://api.eth.events/ethereum/ethereum/mainnet/es/block/search/ \
+  -H 'Authorization: Bearer $mytoken' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": {
+      "bool": {
+        "filter": {
+          "term": {
+            "number.num": 6600000
+          }
+        }
+      }
+    },
+    "_source": ["number.num"]
+  }'
 
 
 Filter empty blocks
@@ -61,25 +83,43 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-    POST /ethereum/ethereum/mainnet/block/search
+    POST /ethereum/ethereum/mainnet/es/block/search/
 
 JSON body:
 
-.. literalinclude:: block/empty_blocks.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "must_not": {
+          "exists": {
+            "field": "transactions"
+          }
+        }
+      }
+    }
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/empty_blocks.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/block/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/empty_blocks.json
+  curl -X POST \
+  https://api.eth.events/ethereum/ethereum/mainnet/es/block/search/ \
+  -H 'Authorization: Bearer $mytoken' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": {
+      "bool": {
+        "must_not": {
+          "exists": {
+            "field": "transactions"
+          }
+        }
+      }
+    }
+  }'
 
 
 Filter last 5 known blocks (sorted)
@@ -92,25 +132,33 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/block/search
+      POST /ethereum/ethereum/mainnet/es/block/search/
 
 JSON body:
 
-.. literalinclude:: block/last_5_sorted.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "sort": {
+      "number.num": "desc"
+    },
+    "size": 5
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/last_5_sorted.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/block/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/block/last_5_sorted.json
+  curl -X POST \
+  https://api.eth.events/ethereum/ethereum/mainnet/es/block/search/ \
+  -H 'Authorization: Bearer $mytoken' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "sort": {
+      "number.num": "desc"
+    },
+    "size": 5
+  }'
 
 
 Transaction
@@ -126,33 +174,57 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/tx/search
+      POST /ethereum/ethereum/mainnet/es/tx/search/
 
 JSON body:
 
-.. literalinclude:: tx/by_block_hash.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "term": {
+              "blockHash": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+            }
+          }
+        ]
+      }
+    },
+    "size": 200
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_block_hash.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/tx/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_block_hash.json 
+  curl -X POST \
+  https://api.eth.events/ethereum/ethereum/mainnet/es/tx/search/ \
+  -H 'Authorization: Bearer $mytoken' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "term": {
+              "blockHash": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+            }
+          }
+        ]
+      }
+    },
+    "size": 200
+  }'
 
 Filter by a range of block numbers
 ----------------------------------
 
 The results will contain all transactions, that are included in 
 a block, that is within the specified boundaries of the block number
-range. The block number has to be greater than or equal to 4242 (`gte`)
-and less than or equal to 5353 (`lte`).
+range. The block number has to be greater than or equal to 6400000 (`gte`)
+and less than or equal to 6500000 (`lte`).
 The results will show a maximum of 200 blocks, in no particular order.
 
 
@@ -160,25 +232,55 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/tx/search
+      POST /ethereum/ethereum/mainnet/es/tx/search/
 
 JSON body:
 
-.. literalinclude:: tx/by_blocknumber_range.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "range": {
+              "blockNumber.num": {
+                "gte": 6400000,
+                "lte": 6500000
+              }
+            }
+          }
+        ]
+      }
+    },
+    "size": 200
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_blocknumber_range.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/tx/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_blocknumber_range.json
+  curl -X POST \
+  https://api.eth.events/ethereum/ethereum/mainnet/es/tx/search/ \
+  -H 'Authorization: Bearer $mytoken' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "range": {
+              "blockNumber.num": {
+                "gte": 6400000,
+                "lte": 6500000
+              }
+            }
+          }
+        ]
+      }
+    },
+    "size": 200
+  }'
 
 
 Filter by receiving or originating address
@@ -191,25 +293,57 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/tx/search
+      POST /ethereum/ethereum/mainnet/es/tx/search/
 
 JSON body:
 
-.. literalinclude:: tx/by_from_or_to_address.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "should": [
+          {
+            "term": {
+              "from": "0xa1e4380a3b1f749673e270229993ee55f35663b4"
+            }
+          },
+          {
+            "term": {
+              "to": "0xa1e4380a3b1f749673e270229993ee55f35663b4"
+            }
+          }
+        ]
+      }
+    }
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_from_or_to_address.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/tx/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_from_or_to_address.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/tx/search/ \
+    -H 'Authorization: Bearer $mytoken' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "term": {
+                "from": "0xa1e4380a3b1f749673e270229993ee55f35663b4"
+              }
+            },
+            {
+              "term": {
+                "to": "0xa1e4380a3b1f749673e270229993ee55f35663b4"
+              }
+            }
+          ]
+        }
+      }
+    }'
 
 
 
@@ -222,25 +356,47 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/tx/search
+      POST /ethereum/ethereum/mainnet/es/tx/search/
 
 JSON body:
 
-.. literalinclude:: tx/by_tx_hash.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "term": {
+              "_id": "0x5c504ed432cb51138bcf09aa5e8a410dd4a1e204ef84bfed1be16dfba1b22060"
+            }
+          }
+        ]
+      }
+    }
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_tx_hash.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/tx/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/tx/by_tx_hash.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/tx/search/ \
+    -H 'Authorization: Bearer $mytoken' \
+    -H 'Content-Type: application/json' \
+    -d '  {
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "_id": "0x5c504ed432cb51138bcf09aa5e8a410dd4a1e204ef84bfed1be16dfba1b22060"
+              }
+            }
+          ]
+        }
+      }
+    }'
 
 
 Log
@@ -256,25 +412,47 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/log/search
+      POST /ethereum/ethereum/mainnet/es/log/search/
 
 JSON body:
 
-.. literalinclude:: log/by_causing_tx_sender.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "term": {
+              "transactionHash": "0xca9b47a8bfd1c8c0e184992e0a2714558603182fc4a7f2ac16cf16f6be4f0a2a" 
+            }
+          }
+        ]
+      }
+    }
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_causing_tx_sender.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/log/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_causing_tx_sender.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/log/search/ \
+    -H 'Authorization: Bearer $mytoken' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "term": {
+                  "transactionHash": "0xca9b47a8bfd1c8c0e184992e0a2714558603182fc4a7f2ac16cf16f6be4f0a2a" 
+                }
+              }
+            ]
+          }
+        }
+      }'
 
 
 
@@ -287,88 +465,49 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/log/search
+      POST /ethereum/ethereum/mainnet/es/log/search/
 
 JSON body:
 
-.. literalinclude:: log/by_emitting_contract.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "term": {
+              "address": "0x12459c951127e0c374ff9105dda097662a027093" 
+            }
+          }
+        ]
+      }
+    },
+    "size": 100
+  }
 
-``HTTPie``:
-
-.. code:: bash
-
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_emitting_contract.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/log/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_emitting_contract.json 
-
-
-Filter by topic[0] signature
-----------------------------
-
-The results will contain all logs, that have the specified topic signature
-as firs element in their `topics` array.
-
-HTTP-Method/Endpoint:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/log/search
-
-JSON body:
-
-.. literalinclude:: log/by_topic_signature.json
-
-Execute the request with:
-
-``HTTPie``:
-
-.. code:: bash
-
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_topic_signature.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/log/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_topic_signature.json
-
-
-Filter by causing transaction's hash
-------------------------------------
-
-The results will contain all logs, where the transaction that caused the log to be emitted
-has the specified transaction `hash`.
-
-
-HTTP-Method/Endpoint:
-
-.. code:: bash
-
-      POST /ethereum/ethereum/mainnet/log/search
-
-JSON body:
-
-.. literalinclude:: log/by_txhash.json
-
-Execute the request with:
-
-``HTTPie``:
-
-.. code:: bash
-
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_txhash.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/log/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/log/by_txhash.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/log/search/ \
+    -H 'Authorization: Bearer $mytoken' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "address": "0x12459c951127e0c374ff9105dda097662a027093" 
+              }
+            }
+          ]
+        }
+      },
+      "size": 100
+    }'
 
 
 Event
@@ -382,25 +521,47 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/event/search
+      POST /ethereum/ethereum/mainnet/es/event/search/
 
 JSON body:
 
-.. literalinclude:: event/by_event_name.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "term": {
+              "event": "Transfer" 
+            }
+          }
+        ]
+      }
+    }
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/event/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    -H 'Authorization: Bearer $mytoken' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "event": "Transfer" 
+              }
+            }
+          ]
+        }
+      }
+    }'
 
 
 Filter by emitting contract
@@ -412,25 +573,47 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/event/search
+      POST /ethereum/ethereum/mainnet/es/event/search/
 
 JSON body:
 
-.. literalinclude:: event/by_contract_address.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "term": {
+              "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD" 
+            }
+          }
+        ]
+      }
+    }
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/event/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    -H 'Authorization: Bearer $mytoken' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD" 
+              }
+            }
+          ]
+        }
+      }
+    }'
 
 
 Filter by ERC20 contract's address and `from` address
@@ -444,25 +627,89 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/event/search
+      POST /ethereum/ethereum/mainnet/es/event/search/
 
 JSON body:
 
-.. literalinclude:: event/by_erc20_contract_and_from_address.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "term": {
+              "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD" 
+            }
+          },
+          {
+            "nested": {
+              "path": "args",
+              "query": {
+                "bool": {
+                  "filter": [
+                    {
+                      "term": {
+                        "args.name": "_from"
+                      }
+                    },
+                    {
+                      "term": {
+                        "args.value.hex": "0x8d7a4f88e494de0ca71c4b1b469613ec9d12686c" 
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
 
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/event/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/event/by_event_name.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    -H 'Authorization: Bearer $mytoken' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD" 
+              }
+            },
+            {
+              "nested": {
+                "path": "args",
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "term": {
+                          "args.name": "_from"
+                        }
+                      },
+                      {
+                        "term": {
+                          "args.value.hex": "0x8d7a4f88e494de0ca71c4b1b469613ec9d12686c" 
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }'
 
 
 Specialised queries
@@ -479,56 +726,68 @@ HTTP-Method/Endpoint:
 
 .. code:: bash
 
-      POST /ethereum/ethereum/mainnet/block,tx/search
+      POST /ethereum/ethereum/mainnet/es/block,tx/search/
 
 JSON body:
 
-.. literalinclude:: find_entity_by_hash.json
+.. code-block:: json
 
-Execute the request with:
+  {
+    "query": {
+      "bool": {
+        "should": [
+          {
+            "ids": {
+              "values": [
+                "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+              ]
+            }
+          },
+          {
+            "term": {
+              "from": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+            }
+          },
+          {
+            "term": {
+              "to": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd"
+            }
+          }
+        ]
+      }
+    }
+  }
 
-``HTTPie``:
-
-.. code:: bash
-
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/find_entity_by_hash.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/event/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/find_entity_by_hash.json
-
-
-
-Get 10 tx and latest block in one query
----------------------------------------
-
-The results will contain 10 transactions in no particular order. Additionally, the results will contain the 
-latest block. 
-
-HTTP-Method/Endpoint:
-
-.. code:: bash
-
-      POST /ethereum/ethereum/mainnet/block/search
-
-JSON body:
-
-.. literalinclude:: get_tx_and_latest_block.json
-
-Execute the request with:
-
-``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/get_tx_and_latest_block.json | http POST https://api.eth.events/ethereum/ethereum/mainnet/block/search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-.. code:: bash
-
-  curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/get_tx_and_latest_block.json
-
-
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/block,tx/search/ \
+    -H 'Authorization: Bearer d2560f14-1935-44e7-ad3e-a1718dc03bd2' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "ids": {
+                "values": [
+                  "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+                ]
+              }
+            },
+            {
+              "term": {
+                "from": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+              }
+            },
+            {
+              "term": {
+                "to": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd"
+              }
+            }
+          ]
+        }
+      }
+    }'

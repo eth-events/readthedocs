@@ -1,173 +1,173 @@
 {
-    "index_patterns": [
-        "*-tx"
-    ],
-    "settings": {
-        "number_of_shards": 16,
-        "number_of_replicas": 1
-    },
-    "mappings": {
-        "tx": {
-            "dynamic": "false",
-            "_all": {
-                "enabled": false
-            },
-            "properties": {
-                "blockHash": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "blockNumber": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "contractAddress": {
-                    "type": "text",
-                    "fields": {
-                        "raw": {
-                            "type": "keyword"
-                        }
-                    }
-                },
-                "cumulativeGasUsed": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "from": {
-                    "type": "text",
-                    "fields": {
-                        "raw": {
-                            "type": "keyword"
-                        }
-                    }
-                },
-                "gas": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "gasPrice": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "gasUsed": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "hash": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "input": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "logsBloom": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "nonce": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "r": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "root": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "s": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "status": {
-                    "type": "boolean"
-                },
-                "timestamp": {
-                    "type": "date"
-                },
-                "to": {
-                    "type": "text",
-                    "fields": {
-                        "raw": {
-                            "type": "keyword"
-                        }
-                    }
-                },
-                "transactionIndex": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "v": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "value": {
-                    "properties": {
-                        "eth": {
-                            "type": "double"
-                        },
-                        "padded": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                }
-            }
-        }
-    }
+	"index_patterns": [
+		"*-tx"
+	],
+	"settings": {
+		"number_of_shards": 16,
+		"number_of_replicas": 1
+	},
+	"mappings": {
+		"tx": {
+			"dynamic": "false",
+			"properties": {
+				"blockHash": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"blockNumber": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"contractAddress": {
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"cumulativeGasUsed": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"from": {
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"gas": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"gasPrice": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"gasUsed": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"hash": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"input": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"logsBloom": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"nonce": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"r": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"root": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"s": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"status": {
+					"type": "boolean"
+				},
+				"timestamp": {
+					"type": "date"
+				},
+				"to": {
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"transactionIndex": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"v": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"value": {
+					"properties": {
+						"eth": {
+							"type": "double"
+						},
+						"padded": {
+							"type": "keyword",
+							"ignore_above": 256
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				}
+			}
+		}
+	}
 }

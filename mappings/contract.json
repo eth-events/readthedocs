@@ -1,104 +1,102 @@
 {
-    "index_patterns": [
-        "*-contract"
-    ],
-    "settings": {
-        "number_of_shards": 16,
-        "number_of_replicas": 1
-    },
-    "mappings": {
-        "contract": {
-            "dynamic": "false",
-            "_all": {
-                "enabled": false
-            },
-            "properties": {
-                "address": {
-                    "type": "text",
-                    "fields": {
-                        "raw": {
-                            "type": "keyword"
-                        }
-                    }
-                },
-                "abi": {
-                    "type": "binary"
-                },
-                "name": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "runs": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "bytecode": {
-                    "type": "binary"
-                },
-                "source": {
-                    "type": "text"
-                },
-                "compiler": {
-                    "type": "keyword"
-                },
-                "createdAt": {
-                    "type": "date"
-                },
-                "optimizations": {
-                    "type": "boolean"
-                },
-                "probability": {
-                    "type": "double"
-                },
-                "links": {
-                    "type": "nested",
-                    "properties": {
-                        "description": {
-                            "type": "keyword"
-                        },
-                        "url": {
-                            "type": "keyword"
-                        }
-                    }
-                },
-                "constructorArgs": {
-                    "type": "nested",
-                    "properties": {
-                        "name": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        },
-                        "pos": {
-                            "type": "long"
-                        },
-                        "value": {
-                            "properties": {
-                                "hex": {
-                                    "type": "keyword",
-                                    "ignore_above": 256
-                                },
-                                "num": {
-                                    "type": "long"
-                                },
-                                "scaled": {
-                                    "type": "double"
-                                },
-                                "type": {
-                                    "type": "keyword",
-                                    "ignore_above": 256
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+	"index_patterns": [
+		"*-contract"
+	],
+	"settings": {
+		"number_of_shards": 1,
+		"number_of_replicas": 7
+	},
+	"mappings": {
+		"contract": {
+			"dynamic": "false",
+			"properties": {
+				"address": {
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"abi": {
+					"type": "binary"
+				},
+				"name": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"runs": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"bytecode": {
+					"type": "binary"
+				},
+				"source": {
+					"type": "text"
+				},
+				"compiler": {
+					"type": "keyword"
+				},
+				"createdAt": {
+					"type": "date"
+				},
+				"optimizations": {
+					"type": "boolean"
+				},
+				"probability": {
+					"type": "double"
+				},
+				"links": {
+					"type": "nested",
+					"properties": {
+						"description": {
+							"type": "keyword"
+						},
+						"url": {
+							"type": "keyword"
+						}
+					}
+				},
+				"constructorArgs": {
+					"type": "nested",
+					"properties": {
+						"name": {
+							"type": "keyword",
+							"ignore_above": 256
+						},
+						"pos": {
+							"type": "long"
+						},
+						"value": {
+							"properties": {
+								"hex": {
+									"type": "keyword",
+									"ignore_above": 256
+								},
+								"num": {
+									"type": "long"
+								},
+								"scaled": {
+									"type": "double"
+								},
+								"type": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

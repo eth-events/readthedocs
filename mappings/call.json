@@ -1,97 +1,104 @@
 {
-    "index_patterns": [
-        "*-call"
-    ],
-    "settings": {
-        "number_of_shards": 16,
-        "number_of_replicas": 1
-    },
-    "mappings": {
-        "call": {
-            "dynamic": "false",
-            "_all": {
-                "enabled": false
-            },
-            "properties": {
-                "args": {
-                    "type": "nested",
-                    "properties": {
-                        "name": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        },
-                        "pos": {
-                            "type": "long"
-                        },
-                        "value": {
-                            "properties": {
-                                "hex": {
-                                    "type": "keyword",
-                                    "ignore_above": 256
-                                },
-                                "num": {
-                                    "type": "long"
-                                },
-                                "scaled": {
-                                    "type": "double"
-                                },
-                                "type": {
-                                    "type": "keyword",
-                                    "ignore_above": 256
-                                }
-                            }
-                        }
-                    }
-                },
-                "blockHash": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "blockNumber": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "from": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "to": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "transactionIndex": {
-                    "properties": {
-                        "num": {
-                            "type": "long"
-                        },
-                        "raw": {
-                            "type": "keyword",
-                            "ignore_above": 256
-                        }
-                    }
-                },
-                "probability": {
-                    "type": "double"
-                },
-                "timestamp": {
-                    "type": "date"
-                },
-                "hash": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                },
-                "method": {
-                    "type": "keyword",
-                    "ignore_above": 256
-                }
-            }
-        }
-    }
+	"index_patterns": [
+		"*-call"
+	],
+	"settings": {
+		"number_of_shards": 16,
+		"number_of_replicas": 1
+	},
+	"mappings": {
+		"call": {
+			"dynamic": "false",
+			"properties": {
+				"args": {
+					"type": "nested",
+					"properties": {
+						"name": {
+							"type": "keyword",
+							"ignore_above": 256
+						},
+						"pos": {
+							"type": "long"
+						},
+						"value": {
+							"properties": {
+								"hex": {
+									"type": "keyword",
+									"ignore_above": 256
+								},
+								"num": {
+									"type": "long"
+								},
+								"scaled": {
+									"type": "double"
+								},
+								"type": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						}
+					}
+				},
+				"blockHash": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"blockNumber": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"from": {
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"to": {
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"transactionIndex": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"probability": {
+					"type": "double"
+				},
+				"timestamp": {
+					"type": "date"
+				},
+				"hash": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"method": {
+					"type": "keyword",
+					"ignore_above": 256
+				}
+			}
+		}
+	}
 }

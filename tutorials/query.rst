@@ -60,7 +60,7 @@ no particular order.
 
 .. code:: bash
 
-  http GET https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
+  http GET https://api.eth.events/ethereum/event/_search -a $myuser:$mypassword
 
 The returned JSON starts with meta-information about the processing of
 the query (not shown here).
@@ -191,7 +191,7 @@ Execute the request with:
 
   .. code:: bash
 
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_contract.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
+    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_contract.json | http POST https://api.eth.events/ethereum/event/_search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -284,7 +284,7 @@ Execute the request with:
 
   .. code:: bash
 
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_type.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
+    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_type.json | http POST https://api.eth.events/ethereum/event/_search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
@@ -342,7 +342,7 @@ Execute the request with:
 
   .. code:: bash
 
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_sorted.json | http POST https://public.eth.events/ethereum/event/_search -a $myuser:$mypassword
+    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_sorted.json | http POST https://api.eth.events/ethereum/event/_search -a $myuser:$mypassword
 
 To save the JSON body to disk in the UNIX terminal, type:
 
