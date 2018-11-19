@@ -39,8 +39,8 @@ copy-pasteable commands for ``HTTPie`` throughout the tutorial, so if you
 want to follow along, it is advisable to install the software first.
 
 You also will need a registered eth.events API-Account in order to run the 
-REST calls. The account will be used in the following tutorial as ``$myuser``
-and ``$mypassword``. Please replace the variables with your user and password.
+REST calls. The token of your account will be used in the following tutorial as ``$token``. 
+Please replace the variables with your user and password.
 
 Create an eth.events query step-by-step
 ---------------------------------------
@@ -48,19 +48,20 @@ Create an eth.events query step-by-step
 Retrieve all events indexed by eth.events
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On the eth.events endpoint ``/events/_search``, you are able to query
+On the eth.events endpoint ``/ethereum/ethereum/mainnet/es/event/search``, you are able to query
 all events from the Ethereum mainnet.
 
-A simple GET request to ``/ethereum/event/_search`` shows us 10 events in
+A simple GET request to ``/ethereum/ethereum/mainnet/es/event/search`` shows us 10 events in
 no particular order.
 
- Execute the request with:
-
--  ``HTTPie``:
+Execute the request with ``cURL``:
 
 .. code:: bash
 
-  http GET https://api.eth.events/ethereum/event/_search -a $myuser:$mypassword
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    -H 'Authorization: Bearer $mytoken' \
+    -H 'Content-Type: application/json' 
 
 The returned JSON starts with meta-information about the processing of
 the query (not shown here).
@@ -185,19 +186,26 @@ body of the HTTP-request:
   }
 
 
-Execute the request with:
+Execute the request with ``cURL``:
 
--  ``HTTPie``:
+.. code:: bash
 
-  .. code:: bash
-
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_contract.json | http POST https://api.eth.events/ethereum/event/_search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-  .. code:: bash
-
-    curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_contract.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    -H 'Authorization: Bearer d2560f14-1935-44e7-ad3e-a1718dc03bd2' \
+    -H 'Content-Type: application/json' 
+    -d '{
+      "query": {
+        "bool": {
+          "filter":
+            {
+              "term": {
+                "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
+              }
+            }
+        }
+      }
+    }'
 
 
 The query has to be specified in the ``"query"`` parameter. We use a
@@ -278,19 +286,32 @@ so we filter for the ``event.keyword`` field, which is of type
 and ``keyword`` types in Elasticsearch, look
 `here <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-term-query.html>`__.
 
-Execute the request with:
+Execute the request with ``cURL``:
 
--  ``HTTPie``:
+.. code:: bash
 
-  .. code:: bash
-
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_type.json | http POST https://api.eth.events/ethereum/event/_search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-  .. code:: bash
-
-    curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_type.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    -H 'Authorization: Bearer d2560f14-1935-44e7-ad3e-a1718dc03bd2' \
+    -H 'Content-Type: application/json' 
+    -d '{
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "event.keyword": "Transfer"
+              }
+            },
+            {
+              "term": {
+                "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
+              }
+            }
+          ]
+        }
+      }
+    }'
 
 Retrieving sorted results
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -336,19 +357,38 @@ want the integer representation and not a hex encoding.
 With ``"order":"desc"``, the events will be sorted in descending order
 of the block, where they were included in the blockchain.
 
-Execute the request with:
+Execute the request with ``cURL``:
 
--  ``HTTPie``:
+.. code:: bash
 
-  .. code:: bash
-
-    http GET https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_sorted.json | http POST https://api.eth.events/ethereum/event/_search -a $myuser:$mypassword
-
-To save the JSON body to disk in the UNIX terminal, type:
-
-  .. code:: bash
-
-    curl -O https://raw.githubusercontent.com/eth-events/readthedocs/master/example-queries/erc20_event_sorted.json
+  curl -X POST \
+    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    -H 'Authorization: Bearer d2560f14-1935-44e7-ad3e-a1718dc03bd2' \
+    -H 'Content-Type: application/json' 
+    -d '{
+      "query":{
+          "bool":{
+            "filter":[
+                {
+                  "term":{
+                      "event.keyword":"Transfer"
+                  }
+                },
+                {
+                  "term":{
+                      "address":"0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
+                  }
+                }
+            ]
+          }
+      },
+      "sort":{
+          "blockNumber.num":{
+            "order":"desc"
+          }
+      },
+      "size":5
+    }'
 
 Restricting result size
 ~~~~~~~~~~~~~~~~~~~~~~~
