@@ -25,10 +25,10 @@ Please also visit our main `Website <https://eth.events>`__ or in case you have 
    :caption: Documentation Contents:
 
    authorization/index
-   tutorials/index
-   example-queries/index
    endpoints/index
    data-types/index
+   example-queries/index
+   tutorials/index
 
 .. Indices and tables
 .. ==================
