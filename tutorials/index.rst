@@ -9,4 +9,3 @@ and the schemes and structuring of the query-results.
    :maxdepth: 2
 
    query
-   block-explorer
