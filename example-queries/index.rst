@@ -718,8 +718,7 @@ Specialised queries
 Find entity by hash
 -------------------
 
-The results will contain either a block with the specified block hash or all transactions, whose sender (`from`) or receiver (`to`) is 
-has the specified address.
+The results will contain either a block with the specified block hash or all transactions, whose sender (`from`) or receiver (`to`) has the specified address.
 Queries like this are useful if the type of the entity that a hash represents is not known in advance.
 
 HTTP-Method/Endpoint:
