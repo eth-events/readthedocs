@@ -1,11 +1,4 @@
 {
-	"index_patterns": [
-		"*-call"
-	],
-	"settings": {
-		"number_of_shards": 16,
-		"number_of_replicas": 1
-	},
 	"mappings": {
 		"call": {
 			"dynamic": "false",
