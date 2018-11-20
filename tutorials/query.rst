@@ -9,7 +9,7 @@ from the Ethereum Blockchain with the help of the eth.events API.
 
 We will show you how to retrieve data from eth.events using the
 `ElasticSearch Query
-DSL <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl.html>`__.
+DSL <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/query-dsl.html>`__.
 
 You will learn
 ~~~~~~~~~~~~~~
@@ -37,8 +37,8 @@ advanced usage and a graphical UI we recommend using
 copy-pasteable commands for ``cURL`` throughout the tutorial, so if you
 want to follow along, it is advisable to install the software first.
 
-You also will need a `registered eth.events API-Account <https://account.eth.events/api/token>`__ in order to run the 
-REST calls. The token of your account will be used in the following tutorial as ``$token``. 
+You also will need a `registered eth.events API-Account <https://account.eth.events/api/token>`__ in order to run the
+REST calls. The token of your account will be used in the following tutorial as ``$token``.
 Please replace the variables with your user and password.
 
 Create an eth.events query step-by-step
@@ -60,7 +60,7 @@ Execute the request with ``cURL``:
   curl -X POST \
     https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
     -H 'Authorization: Bearer $mytoken' \
-    -H 'Content-Type: application/json' 
+    -H 'Content-Type: application/json'
 
 The returned JSON starts with meta-information about the processing of
 the query (not shown here).
@@ -192,7 +192,7 @@ Execute the request with ``cURL``:
   curl -X POST \
     https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
     -H 'Authorization: Bearer d2560f14-1935-44e7-ad3e-a1718dc03bd2' \
-    -H 'Content-Type: application/json' 
+    -H 'Content-Type: application/json'
     -d '{
       "query": {
         "bool": {
@@ -209,7 +209,7 @@ Execute the request with ``cURL``:
 
 The query has to be specified in the ``"query"`` parameter. We use a
 `filter
-context <https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html#_scoring_with_literal_bool_filter_literal>`__
+context <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/query-dsl-bool-query.html#_scoring_with_literal_bool_filter_literal>`__
 ``"bool": {"filter": ...}`` because we are only interested in filtering
 elements.
 
@@ -283,7 +283,7 @@ searching. We want to match the event name exactly (case sensitive),
 so we filter for the ``event.keyword`` field, which is of type
 ``keyword``. To learn more about the differences between ``text``
 and ``keyword`` types in Elasticsearch, look
-`here <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-term-query.html>`__.
+`here <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/query-dsl-term-query.html>`__.
 
 Execute the request with ``cURL``:
 
@@ -292,7 +292,7 @@ Execute the request with ``cURL``:
   curl -X POST \
     https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
     -H 'Authorization: Bearer d2560f14-1935-44e7-ad3e-a1718dc03bd2' \
-    -H 'Content-Type: application/json' 
+    -H 'Content-Type: application/json'
     -d '{
       "query": {
         "bool": {
@@ -363,7 +363,7 @@ Execute the request with ``cURL``:
   curl -X POST \
     https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
     -H 'Authorization: Bearer d2560f14-1935-44e7-ad3e-a1718dc03bd2' \
-    -H 'Content-Type: application/json' 
+    -H 'Content-Type: application/json'
     -d '{
       "query":{
           "bool":{
@@ -404,14 +404,14 @@ Where to go from here
 ~~~~~~~~~~~~~~~~~~~~~
 
 The best starting point is the `Elasticsearch
-documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl.html>`__.
+documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/query-dsl.html>`__.
 There you’ll learn how to construct more complex filter queries or how
 to combine filters with a boolean logic.
 
 If you are not interested in single events, but rather on cumulated
 properties and statistics, you should have a look at the various
 possibilities of
-`aggregations <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/search-aggregations.html>`__.
+`aggregations <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/search-aggregations.html>`__.
 The example queries at `http://eth.events <https://eth.events>`__ make
 extensive use of aggregations and show how eth.events can be used to
 plot various metrics of different smart contracts.

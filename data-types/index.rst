@@ -7,7 +7,7 @@ Elasticsearch types
 All the types from the blockchain as well as their encodings have to be represented with a Elasticsearch type
 for indexing and searching. Most blockchain types that are no number types are represented as a string in Elasticsearch (`keyword` or `text` type).
 
-To learn more about the types in Elasticsearch, visit their `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/5.6/mapping-types.html>`__.
+To learn more about the types in Elasticsearch, visit their `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/mapping-types.html>`__.
 
 
 
@@ -18,13 +18,13 @@ This are the types that represent a value on the blockchain. For some values, th
 
 raw
 """
-The raw value as read by the ethereum node used for indexing. This corresponds to the normal type as defined in 
+The raw value as read by the ethereum node used for indexing. This corresponds to the normal type as defined in
 the `web3 API`.
 Implemented as a `keyword` type in Elasticsearch.
 
 eth
 """
-A double floating point number that directly represents the ether value. Due to rounding this 
+A double floating point number that directly represents the ether value. Due to rounding this
 is not as accurate as using the `raw` or `padded` value directly.
 Implemented as a `double` type in Elasticsearch.
 
@@ -51,7 +51,3 @@ An explicit property that makes the `keyword` Elasticsearch type of a string acc
 when the default value is of type `text`. This is useful for allowing literal searches instead of
 pattern matching text searches.
 Implemented as a `keyword` type in Elasticsearch.
-
-
-
-
