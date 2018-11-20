@@ -65,3 +65,5 @@ The following chapters will document the available entities and explain it's pro
    log
    event
    call
+   contract
+   token
