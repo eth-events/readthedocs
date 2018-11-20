@@ -31,14 +31,13 @@ What you need
 -------------
 
 If you want play around with the HTTP-requests, you should install an
-HTTP client. For pretty-printed responses in the terminal, we
-recommend using `HTTPie <https://httpie.org/doc#installation>`__. For
+HTTP client. The good ol' terminal users might use ``cURL``. For
 advanced usage and a graphical UI we recommend using
 `Postman <https://www.getpostman.com/apps>`__. We provide
-copy-pasteable commands for ``HTTPie`` throughout the tutorial, so if you
+copy-pasteable commands for ``cURL`` throughout the tutorial, so if you
 want to follow along, it is advisable to install the software first.
 
-You also will need a registered eth.events API-Account in order to run the 
+You also will need a `registered eth.events API-Account <https://account.eth.events/api/token>`__ in order to run the 
 REST calls. The token of your account will be used in the following tutorial as ``$token``. 
 Please replace the variables with your user and password.
 
