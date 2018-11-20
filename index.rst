@@ -12,11 +12,11 @@ Constructing a query and understanding what an eth.events server returns is the 
 
 If you are new to Elasticsearch and eth.events, you first should:
 
+- Inform yourself about the :doc:`eth.events-authorization </authorization/index>` methods
 - Read our :doc:`developer tutorial </tutorials/query>`
 - Familiarise yourself with the `Elasticsearch Query DSL <https://www.elastic.co/guide/en/elasticsearch/reference/6.4/query-dsl.html>`__.
 - Understand the schema and how events are :doc:`mapped </endpoints/index>`
 - Leverage our :doc:`example queries </example-queries/index>` and build your own queries.
-- Build a simple :doc:`web app </tutorials/block-explorer>` querying and displaying blockchain data.
 
 Please also visit our main `Website <https://eth.events>`__ or in case you have any further questions.
 
