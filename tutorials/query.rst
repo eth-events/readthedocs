@@ -30,7 +30,7 @@ JSON, Rest-APIs and the basic structure of HTTP-requests.
 What you need
 -------------
 
-If you want play around with the HTTP-requests, you should install an
+If you want play to around with the HTTP-requests, you should install an
 HTTP client. The good ol' terminal users might use ``cURL``. For
 advanced usage and a graphical UI we recommend using
 `Postman <https://www.getpostman.com/apps>`__. We provide
