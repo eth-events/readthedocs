@@ -31,7 +31,7 @@ This is by far the least secure option, because your API key may end up in all s
 
 .. code:: bash
 
-  curl -X GET h'ttps://api.eth.events/status/?access_token=$mytoken'
+  curl -X GET 'https://api.eth.events/status/?access_token=$mytoken'
 
 API key security
 ----------------
