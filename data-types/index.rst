@@ -22,8 +22,8 @@ The raw value as read by the ethereum node used for indexing. This corresponds t
 the `web3 API`.
 Implemented as a `keyword` type in Elasticsearch.
 
-eth
-"""
+scaled
+""""""
 A double floating point number that directly represents the ether value. Due to rounding this
 is not as accurate as using the `raw` or `padded` value directly.
 Implemented as a `double` type in Elasticsearch.
@@ -45,9 +45,8 @@ hex
 A hex string, representing the hex encoding of a value. This also includes hex encodings of BigInteger blockchain types (e.g. `uint256`), since they are not accessible from a `num` type.
 Implemented as a `keyword` type in Elasticsearch.
 
-keyword
-"""""""
+raw (text stored as keyword)
+""""""""""""""""""""""""""""
 An explicit property that makes the `keyword` Elasticsearch type of a string accessible,
-when the default value is of type `text`. This is useful for allowing literal searches instead of
-pattern matching text searches.
+when the default value is of type `text`. This is useful for allowing literal searches instead of pattern matching text searches.
 Implemented as a `keyword` type in Elasticsearch.
