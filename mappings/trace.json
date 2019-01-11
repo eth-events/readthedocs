@@ -1,0 +1,132 @@
+{
+  "mappings": {
+		"trace": {
+			"dynamic": "false",
+			"properties": {
+				"blockHash": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"blockNumber": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"transactionIndex": {
+					"properties": {
+						"num": {
+							"type": "long"
+						},
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"transactionHash": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"output": {
+					"type": "keyword",
+					"ignore_above": 256
+				},
+				"trace": {
+					"type": "nested",
+					"properties": {
+						"type": {
+							"type": "keyword",
+							"ignore_above": 256
+						},
+						"error": {
+							"type": "keyword",
+							"ignore_above": 256
+						},
+						"traceAddress": {
+							"type": "long"
+						},
+						"action": {
+							"type": "nested",
+							"properties": {
+								"callType": {
+									"type": "keyword",
+									"ignore_above": 256
+								},
+								"from": {
+									"type": "text",
+									"fields": {
+										"raw": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"to": {
+									"type": "text",
+									"fields": {
+										"raw": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"gas": {
+									"properties": {
+										"num": {
+											"type": "long"
+										},
+										"raw": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"input": {
+									"type": "keyword",
+									"ignore_above": 256
+								},
+								"value": {
+									"properties": {
+										"num": {
+											"type": "long"
+										},
+										"raw": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								}
+							}
+						},
+						"result": {
+							"type": "nested",
+							"properties": {
+								"gasUsed": {
+									"properties": {
+										"num": {
+											"type": "long"
+										},
+										"raw": {
+											"type": "keyword",
+											"ignore_above": 256
+										}
+									}
+								},
+								"output": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -58,7 +58,7 @@
 						}
 					}
 				},
-				"miningNonce": {
+				"nonce": {
 					"type": "keyword",
 					"ignore_above": 256
 				},
@@ -105,7 +105,8 @@
 					"ignore_above": 256
 				},
 				"timestamp": {
-					"type": "date"
+					"type": "date",
+					"format": "epoch_second"
 				},
 				"totalDifficulty": {
 					"properties": {
@@ -118,10 +119,6 @@
 							"ignore_above": 256
 						}
 					}
-				},
-				"transactions": {
-					"type": "keyword",
-					"ignore_above": 256
 				},
 				"transactionsRoot": {
 					"type": "keyword",

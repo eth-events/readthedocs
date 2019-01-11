@@ -45,10 +45,6 @@
 				"probability": {
 					"type": "double"
 				},
-				"id": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
 				"blockHash": {
 					"type": "keyword",
 					"ignore_above": 256
@@ -59,15 +55,6 @@
 							"type": "long"
 						},
 						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"error": {
-					"type": "text",
-					"fields": {
-						"keyword": {
 							"type": "keyword",
 							"ignore_above": 256
 						}
@@ -85,11 +72,17 @@
 					}
 				},
 				"event": {
-					"type": "keyword",
-					"ignore_above": 256
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
 				},
 				"timestamp": {
-					"type": "date"
+					"type": "date",
+					"format": "epoch_second"
 				},
 				"transactionHash": {
 					"type": "keyword",

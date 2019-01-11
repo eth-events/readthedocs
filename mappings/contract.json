@@ -16,8 +16,13 @@
 					"type": "binary"
 				},
 				"name": {
-					"type": "keyword",
-					"ignore_above": 256
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
 				},
 				"runs": {
 					"properties": {
@@ -34,13 +39,17 @@
 					"type": "binary"
 				},
 				"source": {
-					"type": "text"
+					"type": "binary"
 				},
 				"compiler": {
 					"type": "keyword"
 				},
+				"library": {
+					"type": "keyword"
+				},
 				"createdAt": {
-					"type": "date"
+					"type": "date",
+					"format": "epoch_second"
 				},
 				"optimizations": {
 					"type": "boolean"
@@ -52,9 +61,15 @@
 					"type": "nested",
 					"properties": {
 						"description": {
-							"type": "keyword"
+							"type": "text",
+							"fields": {
+								"raw": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
 						},
-						"url": {
+						"link": {
 							"type": "keyword"
 						}
 					}

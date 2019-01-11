@@ -46,15 +46,13 @@
 						}
 					}
 				},
-				"removed": {
-					"type": "boolean"
-				},
-				"signature": {
+				"type": {
 					"type": "keyword",
 					"ignore_above": 256
 				},
 				"timestamp": {
-					"type": "date"
+					"type": "date",
+					"format": "epoch_second"
 				},
 				"topics": {
 					"type": "keyword",

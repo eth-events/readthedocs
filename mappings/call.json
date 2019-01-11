@@ -81,15 +81,21 @@
 					"type": "double"
 				},
 				"timestamp": {
-					"type": "date"
+					"type": "date",
+					"format": "epoch_second"
 				},
 				"hash": {
 					"type": "keyword",
 					"ignore_above": 256
 				},
 				"method": {
-					"type": "keyword",
-					"ignore_above": 256
+					"type": "text",
+					"fields": {
+						"raw": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
 				}
 			}
 		}
