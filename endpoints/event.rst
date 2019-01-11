@@ -35,6 +35,11 @@ Mapping
 For some fields, there are multiple encodings available, which are nested as properties on the field.
 More information on those data types can be found :doc:`here </data-types/index>`.
 
+Note: For example the `address` is stored using the format `raw (text stored as keyword)` described on the datatypes page.
+In that particular case, the checksum-case formatted address can be used as a term filter query using `address.raw` and 
+for a case-insensitive query, use `address`.
+
+
 The following is the output of the Elasticsearch mapping for the `Event` type:
 
 
