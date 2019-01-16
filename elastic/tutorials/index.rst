@@ -6,6 +6,5 @@ tutorials. They are a good starting point for getting used to the Elasticsearch 
 and the schemes and structuring of the query-results.
 
 .. toctree::
-   :maxdepth: 2
 
    query
