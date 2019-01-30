@@ -13,10 +13,14 @@ Get yourself a proper SQL-Client to access our database. We currently favour PGA
 
 Connect to the database
 ^^^^^^^^^^^^^^^^^^^^^^^
-Setup your connection as mentioned in the account backend. If you need help or occur any error, please don't hesitate to ask for help from us.
+Setup your connection as mentioned in the account backend. If you need help or any errors occur, please don’t hesitate to ask for help from us.
 
 Note
 ^^^^
 Please keep in mind that the SQL interface is still in a beta status, hence the service might not be constantly available and the database
 schema could change from one day through another. 
 Now you might proceed using the SQL database or go on to the :doc:`tutorial <../tutorials/index>`.
+
+Contact
+^^^^^^^
+We might also be able to help you to pin down and visualize the data relevant for your specific use case. Just email us at contact@eth.events - we are excited to see our data used in many new ways!
