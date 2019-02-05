@@ -14,6 +14,8 @@ What you must know already
 
 This tutorial is written for programmers, who have some experience with SQL. You should also have visited the :doc:`authorization <../authorization/index>`
 page and setup our connection to the database.
+Remember that the subentities are stored using the Postgresql-Type **JSONB**.
+For more information on that, please take a look at the :ref:`er-model <sub-entities-jsonb>`.
 
 Basic eth.events SQL queries
 ----------------------------
@@ -41,35 +43,21 @@ This will show the whole block. But you can use a shorter form:
 
   SELECT max(number) FROM block 
 
-Find events and their arguments for a given block
+Find events for a given block
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: SQL
 
-  SELECT * FROM event 
-    JOIN arg 
-      ON event.id = arg.event_id 
+  SELECT * FROM event
   WHERE event.block_number = 7075271
 
-Find calls and their arguments for a transaction hash
+Find calls for a transaction hash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: SQL
 
   SELECT * FROM call
-    JOIN arg 
-      ON call.id = arg.call_id 
   WHERE call.hash = '0xadd837afa5b68987eb9f0167ad65cbb8131f57da84db56a19acf4a5a98bd35da'
-
-Find traces for a transaction hash
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code:: SQL
-
-  SELECT * FROM trace
-    JOIN internaltrace AS traces
-      ON trace.id = traces.trace_id 
-  WHERE trace.transaction_hash = '0x9994f38854f80b430b4708d356bf201154055d846c63bedab25deee329066cd4'
 
 Find transactions for a given contract
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,7 +66,20 @@ For our example we use the address of the TenXPay token contract:
 .. code:: SQL
 
   SELECT * FROM tx
-  WHERE tx."to" = LOWER('0xB97048628DB6B661D4C2aA833e95Dbe1A905B280') 
+  WHERE tx.to = '0xB97048628DB6B661D4C2aA833e95Dbe1A905B280'
+  LIMIT 100
+
+Find specific events for a given contract
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+For our example we use the address of the TenXPay token contract again, however we
+would like to know the values of transfers greater than *1ETH*:
+
+.. code:: SQL
+
+  SELECT arg->'scaled', arg ->'num'
+  FROM "event",jsonb_array_elements(args) arg 
+  WHERE event = 'Transfer' AND address = '0xB97048628DB6B661D4C2aA833e95Dbe1A905B280'
+  AND (arg->'num')::numeric > 1000000000000000000
   LIMIT 100
 
 Where to go from here
