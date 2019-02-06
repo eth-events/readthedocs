@@ -15,7 +15,7 @@ What you must know already
 This tutorial is written for programmers, who have some experience with SQL. You should also have visited the :doc:`authorization <../authorization/index>`
 page and setup our connection to the database.
 Remember that the subentities are stored using the Postgresql-Type **JSONB**.
-For more information on that, please take a look at the :ref:`er-model <sub-entities-jsonb>`.
+For more information on that, please take a look at the :ref:`ER model <sub-entities-jsonb>`.
 
 Basic eth.events SQL queries
 ----------------------------
