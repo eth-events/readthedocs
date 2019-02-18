@@ -8,7 +8,7 @@ The `log` object inherits it's properties from the `web3 API <https://github.com
 
 
 - `logIndex`: `Number` - integer of the log index position in the block.
-- `transactionIndex`: `Number` - integer of the transactions index position log was created from. 
+- `transactionIndex`: `Number` - integer of the transactions index position log was created from.
 - `transactionHash`: `String`- hash of the transactions this log was created from.
 - `blockHash`: `String` - hash of the block where this log was in. `null` when its pending.
 - `blockNumber`: `Number` - the block number where this log was in. `null` when its pending.
@@ -21,10 +21,10 @@ Mapping
 ~~~~~~~
 
 For some fields, there are multiple encodings available, which are nested as properties on the field.
-More information on those data types can be found :doc:`here </data-types/index>`.
+More information on those data types can be found :doc:`here <../data-types/index>`.
 
 Note: For example the `address` is stored using the format `raw (text stored as keyword)` described on the datatypes page.
-In that particular case, the checksum-case formatted address can be used as a term filter query using `address.raw` and 
+In that particular case, the checksum-case formatted address can be used as a term filter query using `address.raw` and
 for a case-insensitive query, use `address`.
 
 The following is the output of the Elasticsearch mapping for the `Log` type:

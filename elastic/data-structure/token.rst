@@ -16,7 +16,7 @@ Mapping
 ~~~~~~~
 
 For some fields, there are multiple encodings available, which are nested as properties on the field.
-More information on those data types can be found :doc:`here </data-types/index>`.
+More information on those data types can be found :doc:`here <../data-types/index>`.
 
 The following is the output of the Elasticsearch mapping for the `Token` type:
 

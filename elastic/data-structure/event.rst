@@ -26,17 +26,17 @@ The argument object's structure:
 - `name` - the argument's name in human readable form
 - `pos` -  the index of the argument's position in the event
 - `value.hex`,`value.scaled`, `value.num` - the value of the events argument in it's corresponding representation
-- `value.type` - the type of the argument's value, can be any type as specified for Solidity 
+- `value.type` - the type of the argument's value, can be any type as specified for Solidity
 
 
 Mapping
 ~~~~~~~
 
 For some fields, there are multiple encodings available, which are nested as properties on the field.
-More information on those data types can be found :doc:`here </data-types/index>`.
+More information on those data types can be found :doc:`here <../data-types/index>`.
 
 Note: For example the `address` is stored using the format `raw (text stored as keyword)` described on the datatypes page.
-In that particular case, the checksum-case formatted address can be used as a term filter query using `address.raw` and 
+In that particular case, the checksum-case formatted address can be used as a term filter query using `address.raw` and
 for a case-insensitive query, use `address`.
 
 

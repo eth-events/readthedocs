@@ -412,6 +412,3 @@ If you are not interested in single events, but rather on cumulated
 properties and statistics, you should have a look at the various
 possibilities of
 `aggregations <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/search-aggregations.html>`__.
-.. The example queries at `http://eth.events <https://eth.events>`__ make
-.. extensive use of aggregations and show how eth.events can be used to
-.. plot various metrics of different smart contracts.

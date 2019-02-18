@@ -24,14 +24,14 @@ The argument object's structure:
 - `name` - the argument's name in human readable form
 - `pos` -  the index of the argument's position in the call
 - `value.hex`,`value.scaled`, `value.num` - the value of the calls argument in it's corresponding representation
-- `value.type` - the type of the argument's value, can be any type as specified for Solidity 
+- `value.type` - the type of the argument's value, can be any type as specified for Solidity
 
 
 Mapping
 ~~~~~~~
 
 For some fields, there are multiple encodings available, which are nested as properties on the field.
-More information on those data types can be found :doc:`here </data-types/index>`.
+More information on those data types can be found :doc:`here <../data-types/index>`.
 
 The following is the output of the Elasticsearch mapping for the `Call` type:
 

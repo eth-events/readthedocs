@@ -1,110 +1,115 @@
 {
-	"mappings": {
-		"contract": {
-			"dynamic": "false",
-			"properties": {
-				"address": {
-					"type": "text",
-					"fields": {
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"abi": {
-					"type": "binary"
-				},
-				"name": {
-					"type": "text",
-					"fields": {
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"runs": {
-					"properties": {
-						"num": {
-							"type": "long"
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"bytecode": {
-					"type": "binary"
-				},
-				"source": {
-					"type": "binary"
-				},
-				"compiler": {
-					"type": "keyword"
-				},
-				"library": {
-					"type": "keyword"
-				},
-				"createdAt": {
-					"type": "date",
-					"format": "epoch_second"
-				},
-				"optimizations": {
-					"type": "boolean"
-				},
-				"probability": {
-					"type": "double"
-				},
-				"links": {
-					"type": "nested",
-					"properties": {
-						"description": {
-							"type": "text",
-							"fields": {
-								"raw": {
-									"type": "keyword",
-									"ignore_above": 256
-								}
-							}
-						},
-						"link": {
-							"type": "keyword"
-						}
-					}
-				},
-				"constructorArgs": {
-					"type": "nested",
-					"properties": {
-						"name": {
-							"type": "keyword",
-							"ignore_above": 256
-						},
-						"pos": {
-							"type": "long"
-						},
-						"value": {
-							"properties": {
-								"hex": {
-									"type": "keyword",
-									"ignore_above": 256
-								},
-								"num": {
-									"type": "long"
-								},
-								"scaled": {
-									"type": "double"
-								},
-								"type": {
-									"type": "keyword",
-									"ignore_above": 256
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+  "address": {
+    "type": "text",
+    "fields": {
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "abi": {
+    "type": "binary"
+  },
+  "name": {
+    "type": "text",
+    "fields": {
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "runs": {
+    "properties": {
+      "num": {
+        "type": "long"
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "bytecodeLsh": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "bytecodeHash": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "bytecode": {
+    "type": "binary"
+  },
+  "source": {
+    "type": "binary"
+  },
+  "compiler": {
+    "type": "keyword"
+  },
+  "library": {
+    "type": "keyword"
+  },
+  "createdAt": {
+    "type": "date",
+    "format": "epoch_second"
+  },
+  "updatedAt": {
+    "type": "date",
+    "format": "epoch_second"
+  },
+  "optimizations": {
+    "type": "boolean"
+  },
+  "probability": {
+    "type": "double"
+  },
+  "links": {
+    "type": "nested",
+    "properties": {
+      "description": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "link": {
+        "type": "keyword"
+      }
+    }
+  },
+  "constructorArgs": {
+    "type": "nested",
+    "properties": {
+      "name": {
+        "type": "keyword",
+        "ignore_above": 256
+      },
+      "pos": {
+        "type": "long"
+      },
+      "value": {
+        "properties": {
+          "hex": {
+            "type": "keyword",
+            "ignore_above": 256
+          },
+          "num": {
+            "type": "long"
+          },
+          "scaled": {
+            "type": "double"
+          },
+          "type": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  }
 }

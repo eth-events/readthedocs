@@ -1,139 +1,149 @@
 {
-	"mappings": {
-		"block": {
-			"dynamic": "false",
-			"properties": {
-				"difficulty": {
-					"properties": {
-						"padded": {
-							"type": "keyword",
-							"ignore_above": 256
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"extraData": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"gasLimit": {
-					"properties": {
-						"num": {
-							"type": "long"
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"gasUsed": {
-					"properties": {
-						"num": {
-							"type": "long"
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"hash": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"logsBloom": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"miner": {
-					"type": "text",
-					"fields": {
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"nonce": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"mixHash": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"number": {
-					"properties": {
-						"num": {
-							"type": "long"
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"parentHash": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"receiptsRoot": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"sha3Uncles": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"size": {
-					"properties": {
-						"num": {
-							"type": "long"
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"stateRoot": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"timestamp": {
-					"type": "date",
-					"format": "epoch_second"
-				},
-				"totalDifficulty": {
-					"properties": {
-						"padded": {
-							"type": "keyword",
-							"ignore_above": 256
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"transactionsRoot": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"uncles": {
-					"type": "text",
-					"fields": {
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				}
-			}
-		}
-	}
+  "difficulty": {
+    "properties": {
+      "padded": {
+        "type": "keyword",
+        "ignore_above": 256
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "extraData": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "gasLimit": {
+    "properties": {
+      "num": {
+        "type": "long"
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "gasUsed": {
+    "properties": {
+      "num": {
+        "type": "long"
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "hash": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "step": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "signature": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "logsBloom": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "miner": {
+    "type": "text",
+    "fields": {
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "nonce": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "mixHash": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "number": {
+    "properties": {
+      "num": {
+        "type": "long"
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "parentHash": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "receiptsRoot": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "sha3Uncles": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "size": {
+    "properties": {
+      "num": {
+        "type": "long"
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "stateRoot": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "timestamp": {
+    "type": "date",
+    "format": "epoch_second"
+  },
+  "totalDifficulty": {
+    "properties": {
+      "padded": {
+        "type": "keyword",
+        "ignore_above": 256
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "transactionsRoot": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "uncles": {
+    "type": "text",
+    "fields": {
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "sealFields": {
+    "type": "text",
+    "fields": {
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  }
 }

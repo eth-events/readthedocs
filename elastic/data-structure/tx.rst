@@ -1,7 +1,7 @@
 Transaction
 ===========
 
-Object schema 
+Object schema
 ~~~~~~~~~~~~~
 The `tx` object inherits it's properties from the transaction object, as specified in the `web3 API <https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethgettransaction>`__:
 
@@ -19,7 +19,7 @@ Mapping
 ~~~~~~~
 
 For some fields, there are multiple encodings available, which are nested as properties on the field.
-More information on those data types can be found :doc:`here </data-types/index>`.
+More information on those data types can be found :doc:`here <../data-types/index>`.
 
 The following is the output of the Elasticsearch mapping for the `Transaction` type:
 

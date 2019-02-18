@@ -4,11 +4,11 @@ Example queries
 The following queries are meant to be a building block for
 your own eth.events queries.
 
-You also will need a registered eth.events API-Account in order to run the 
+You also will need a registered eth.events API-Account in order to run the
 REST calls. Keep in mind to replace the ``$mytoken`` variable in the ``cURL`` commands with your personal API token.
 
-.. contents:: 
-        :local: 
+.. contents::
+        :local:
 
 
 Block
@@ -74,53 +74,6 @@ Execute the request with ``cURL``:
   }'
 
 
-Filter empty blocks
--------------------
-
-The results will contain only blocks that are empty (include no transactions).
-
-HTTP-Method/Endpoint:
-
-.. code:: bash
-
-    POST /ethereum/ethereum/mainnet/es/block/search/
-
-JSON body:
-
-.. code-block:: json
-
-  {
-    "query": {
-      "bool": {
-        "must_not": {
-          "exists": {
-            "field": "transactions"
-          }
-        }
-      }
-    }
-  }
-
-Execute the request with ``cURL``:
-
-.. code:: bash
-
-  curl -X POST \
-  https://api.eth.events/ethereum/ethereum/mainnet/es/block/search/ \
-  -H 'Authorization: Bearer $mytoken' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "query": {
-      "bool": {
-        "must_not": {
-          "exists": {
-            "field": "transactions"
-          }
-        }
-      }
-    }
-  }'
-
 
 Filter last 5 known blocks (sorted)
 -----------------------------------
@@ -167,7 +120,7 @@ Transaction
 Filter by the transaction's block's hash
 ----------------------------------------
 
-The results will contain all transactions that are included in the 
+The results will contain all transactions that are included in the
 specified block, identified with it's `blockHash`.
 
 HTTP-Method/Endpoint:
@@ -186,7 +139,7 @@ JSON body:
         "filter": [
           {
             "term": {
-              "blockHash": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+              "blockHash": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd"
             }
           }
         ]
@@ -209,7 +162,7 @@ Execute the request with ``cURL``:
         "filter": [
           {
             "term": {
-              "blockHash": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+              "blockHash": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd"
             }
           }
         ]
@@ -221,7 +174,7 @@ Execute the request with ``cURL``:
 Filter by a range of block numbers
 ----------------------------------
 
-The results will contain all transactions, that are included in 
+The results will contain all transactions, that are included in
 a block, that is within the specified boundaries of the block number
 range. The block number has to be greater than or equal to 6400000 (`gte`)
 and less than or equal to 6500000 (`lte`).
@@ -286,7 +239,7 @@ Execute the request with ``cURL``:
 Filter by receiving or originating address
 ------------------------------------------
 
-The results will contain all transactions, whose sender (`from`) or receiver (`to`) is 
+The results will contain all transactions, whose sender (`from`) or receiver (`to`) is
 has the specified address.
 
 HTTP-Method/Endpoint:
@@ -424,7 +377,7 @@ JSON body:
         "filter": [
           {
             "term": {
-              "transactionHash": "0xca9b47a8bfd1c8c0e184992e0a2714558603182fc4a7f2ac16cf16f6be4f0a2a" 
+              "transactionHash": "0xca9b47a8bfd1c8c0e184992e0a2714558603182fc4a7f2ac16cf16f6be4f0a2a"
             }
           }
         ]
@@ -446,7 +399,7 @@ Execute the request with ``cURL``:
             "filter": [
               {
                 "term": {
-                  "transactionHash": "0xca9b47a8bfd1c8c0e184992e0a2714558603182fc4a7f2ac16cf16f6be4f0a2a" 
+                  "transactionHash": "0xca9b47a8bfd1c8c0e184992e0a2714558603182fc4a7f2ac16cf16f6be4f0a2a"
                 }
               }
             ]
@@ -477,7 +430,7 @@ JSON body:
         "filter": [
           {
             "term": {
-              "address": "0x12459c951127e0c374ff9105dda097662a027093" 
+              "address": "0x12459c951127e0c374ff9105dda097662a027093"
             }
           }
         ]
@@ -500,7 +453,7 @@ Execute the request with ``cURL``:
           "filter": [
             {
               "term": {
-                "address": "0x12459c951127e0c374ff9105dda097662a027093" 
+                "address": "0x12459c951127e0c374ff9105dda097662a027093"
               }
             }
           ]
@@ -533,7 +486,7 @@ JSON body:
         "filter": [
           {
             "term": {
-              "event": "Transfer" 
+              "event": "transfer"
             }
           }
         ]
@@ -555,7 +508,7 @@ Execute the request with ``cURL``:
           "filter": [
             {
               "term": {
-                "event": "Transfer" 
+                "event": "transfer"
               }
             }
           ]
@@ -585,7 +538,7 @@ JSON body:
         "filter": [
           {
             "term": {
-              "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD" 
+              "address.raw": "0xcfb98637bcae43C13323EAa1731cED2B716962fD"
             }
           }
         ]
@@ -607,7 +560,7 @@ Execute the request with ``cURL``:
           "filter": [
             {
               "term": {
-                "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD" 
+                "address.raw": "0xcfb98637bcae43C13323EAa1731cED2B716962fD"
               }
             }
           ]
@@ -619,8 +572,8 @@ Execute the request with ``cURL``:
 Filter by ERC20 contract's address and `from` address
 -----------------------------------------------------
 
-The results will contain all events that where emitted by the specified contract, and where the 
-`from` argument of the event matches the specifid address. Although this query is tailored for ERC20 contracts, 
+The results will contain all events that where emitted by the specified contract, and where the
+`from` argument of the event matches the specifid address. Although this query is tailored for ERC20 contracts,
 there is no parameter that specifically filters for the ERC20 interface.
 
 HTTP-Method/Endpoint:
@@ -639,7 +592,7 @@ JSON body:
         "filter": [
           {
             "term": {
-              "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD" 
+              "address.raw": "0xcfb98637bcae43C13323EAa1731cED2B716962fD"
             }
           },
           {
@@ -655,7 +608,7 @@ JSON body:
                     },
                     {
                       "term": {
-                        "args.value.hex": "0x8d7a4f88e494de0ca71c4b1b469613ec9d12686c" 
+                        "args.value.hex": "0x59a5208B32e627891C389EbafC644145224006E8"
                       }
                     }
                   ]
@@ -682,7 +635,7 @@ Execute the request with ``cURL``:
           "filter": [
             {
               "term": {
-                "address": "0xcfb98637bcae43C13323EAa1731cED2B716962fD" 
+                "address.raw": "0xcfb98637bcae43C13323EAa1731cED2B716962fD"
               }
             },
             {
@@ -698,7 +651,7 @@ Execute the request with ``cURL``:
                       },
                       {
                         "term": {
-                          "args.value.hex": "0x8d7a4f88e494de0ca71c4b1b469613ec9d12686c" 
+                          "args.value.hex": "0x59a5208B32e627891C389EbafC644145224006E8"
                         }
                       }
                     ]
@@ -738,13 +691,13 @@ JSON body:
           {
             "ids": {
               "values": [
-                "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+                "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd"
               ]
             }
           },
           {
             "term": {
-              "from": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+              "from": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd"
             }
           },
           {
@@ -772,13 +725,13 @@ Execute the request with ``cURL``:
             {
               "ids": {
                 "values": [
-                  "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+                  "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd"
                 ]
               }
             },
             {
               "term": {
-                "from": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd" 
+                "from": "0x4e3a3754410177e6937ef1f84bba68ea139e8d1a2258c5f85db9f1cd715a1bdd"
               }
             },
             {

@@ -1,103 +1,99 @@
 {
-	"mappings": {
-		"call": {
-			"dynamic": "false",
-			"properties": {
-				"args": {
-					"type": "nested",
-					"properties": {
-						"name": {
-							"type": "keyword",
-							"ignore_above": 256
-						},
-						"pos": {
-							"type": "long"
-						},
-						"value": {
-							"properties": {
-								"hex": {
-									"type": "keyword",
-									"ignore_above": 256
-								},
-								"num": {
-									"type": "long"
-								},
-								"scaled": {
-									"type": "double"
-								},
-								"type": {
-									"type": "keyword",
-									"ignore_above": 256
-								}
-							}
-						}
-					}
-				},
-				"blockHash": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"blockNumber": {
-					"properties": {
-						"num": {
-							"type": "long"
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"from": {
-					"type": "text",
-					"fields": {
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"to": {
-					"type": "text",
-					"fields": {
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"transactionIndex": {
-					"properties": {
-						"num": {
-							"type": "long"
-						},
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				},
-				"probability": {
-					"type": "double"
-				},
-				"timestamp": {
-					"type": "date",
-					"format": "epoch_second"
-				},
-				"hash": {
-					"type": "keyword",
-					"ignore_above": 256
-				},
-				"method": {
-					"type": "text",
-					"fields": {
-						"raw": {
-							"type": "keyword",
-							"ignore_above": 256
-						}
-					}
-				}
-			}
-		}
-	}
+  "args": {
+    "type": "nested",
+    "properties": {
+      "name": {
+        "type": "keyword",
+        "ignore_above": 256
+      },
+      "pos": {
+        "type": "long"
+      },
+      "value": {
+        "properties": {
+          "hex": {
+            "type": "keyword",
+            "ignore_above": 256
+          },
+          "num": {
+            "type": "long"
+          },
+          "scaled": {
+            "type": "double"
+          },
+          "type": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "blockHash": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "blockNumber": {
+    "properties": {
+      "num": {
+        "type": "long"
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "from": {
+    "type": "text",
+    "fields": {
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "to": {
+    "type": "text",
+    "fields": {
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "transactionIndex": {
+    "properties": {
+      "num": {
+        "type": "long"
+      },
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "probability": {
+    "type": "double"
+  },
+  "timestamp": {
+    "type": "date",
+    "format": "epoch_second"
+  },
+  "hash": {
+    "type": "keyword",
+    "ignore_above": 256
+  },
+  "method": {
+    "type": "text",
+    "fields": {
+      "raw": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "status": {
+    "type": "boolean"
+  }
 }
