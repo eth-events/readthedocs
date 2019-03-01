@@ -20,7 +20,7 @@ For more information on that, please take a look at the :ref:`ER model <sub-enti
 Basic eth.events SQL queries
 ----------------------------
 
-Choose one of the databases available. All of them are encoded as the triple of: 
+Choose one of the databases available. All of them are encoded as the triple of:
 
 .. code:: bash
 
@@ -41,7 +41,7 @@ This will show the whole block. But you can use a shorter form:
 
 .. code:: SQL
 
-  SELECT max(number) FROM block 
+  SELECT max(number) FROM block
 
 Find events for a given block
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,10 +77,26 @@ would like to know the values of transfers greater than *1ETH*:
 .. code:: SQL
 
   SELECT arg->'scaled', arg ->'num'
-  FROM "event",jsonb_array_elements(args) arg 
+  FROM "event",jsonb_array_elements(args) arg
   WHERE event = 'Transfer' AND address = '0xB97048628DB6B661D4C2aA833e95Dbe1A905B280'
   AND (arg->'num')::numeric > 1000000000000000000
   LIMIT 100
+
+Find the latest 10 DAI Transfer events and extract sender, receiver and value from JSON
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: SQL
+
+  SELECT 
+  	*,
+  	args->0->>'hex' as "from",
+  	args->1->>'hex' as "to",
+  	CAST(args->2->'scaled' AS NUMERIC) AS "value"
+  FROM event
+  WHERE address = '0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359'
+  AND event = 'Transfer'
+  ORDER BY timestamp DESC
+  LIMIT 10
 
 Where to go from here
 ~~~~~~~~~~~~~~~~~~~~~
