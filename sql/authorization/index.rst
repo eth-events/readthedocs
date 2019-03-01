@@ -13,7 +13,7 @@ Get yourself a proper SQL-Client to access our database. We currently favour PGA
 
 Connect to the database
 ^^^^^^^^^^^^^^^^^^^^^^^
-Setup your connection as mentioned in the account backend. If you need help or any errors occur, please don’t hesitate to ask for help from us.
+Setup your connection as mentioned in the `account backend <https://account.eth.events/api/token/>`_. If you need help or any errors occur, please don’t hesitate to ask for help from us.
 
 Note
 ^^^^
