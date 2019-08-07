@@ -2,7 +2,7 @@ ElasticSearch Clients
 =====================
 In order to use a default ElasticSearch client, you can provide the following parameters:
 
-- **server**: *https://api.eth.events/es/*
+- **server**: *https://api.eth.events/ethereum/ethereum/mainnet/es/*
 - **index**: *ethereum-ethereum-mainnet-block*
 - **type**: *block*
 - **username**: *your email address*
@@ -15,7 +15,7 @@ The following example shows how to fetch the latest 5 DAI transfers from Elastic
   const Client = require('elasticsearch').Client
 
   const esClient = new Client({
-    hosts: 'https://api.eth.events/es/',
+    hosts: 'https://api.eth.events/ethereum/ethereum/mainnet/es/',
     httpAuth: 'your-email-address:your-api-key',
   })
 
