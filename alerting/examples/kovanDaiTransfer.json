@@ -1,0 +1,58 @@
+{
+    "alerts": [
+        {
+            "type": "Webhook (POST)",
+            "payload": [
+                {
+                    "fieldName": "transactionHash",
+                    "fieldType": "Field"
+                },
+                {
+                    "fieldName": "args",
+                    "fieldType": "Sub Field",
+                    "subPayloads": [
+                        {
+                            "fieldName": "dst",
+                            "fieldType": "Field"
+                        },
+                        {
+                            "fieldName": "src",
+                            "fieldType": "Field"
+                        },
+                        {
+                            "fieldName": "wad",
+                            "fieldType": "Field"
+                        }
+                    ]
+                }
+            ],
+            "parameters": {
+                "url": "https://mywebhook.example/{transactionHash}/{args#src}"
+            }
+        }
+    ],
+    "targetMap": [
+        {
+            "name": "address",
+            "value": "0xC4375B7De8af5a38a93548eb8453a498222C4fF2",
+            "operator": "Equals"
+        },
+        {
+            "name": "event",
+            "value": "Transfer",
+            "operator": "Equals (ignore case)"
+        },
+        {
+            "name": "args",
+            "operator": "Inspect",
+            "operatorParameters": [
+                {
+                    "name": "dst",
+                    "value": "0x52243C97DD8556fe1092084c199aeFAD4c34fD89",
+                    "operator": "Equals (ignore case)"
+                }
+            ]
+        }
+    ],
+    "targetType": "Event"
+}

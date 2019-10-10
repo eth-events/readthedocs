@@ -24,6 +24,11 @@ You might also want to take a look at our **SQL** interface:
 - Maybe start with looking at the :doc:`entity-relation model <sql/schema/index>`
 - To get a quickstart on how to use the interface you should see the :doc:`sql tutorial <sql/tutorials/sql>`
 
+You may also find here help for our **ALERTING** dashboard:
+
+- Visit :doc:`alerting <alerting/general/index>` to understand how our alerting works
+- `Contact us <mailto:contact@eth.events>`__ to get access to the alerting feature
+
 Please also visit our main `Website <https://eth.events>`__ and get in touch. We're always interested in what you're BUIDLing.
 
 .. toctree::
@@ -34,6 +39,7 @@ Please also visit our main `Website <https://eth.events>`__ and get in touch. We
    api/*
    elastic/*
    sql/*
+   alerting/*
 
 .. Indices and tables
 .. ==================

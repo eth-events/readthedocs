@@ -1,0 +1,52 @@
+{
+    "alerts": [
+        {
+            "type": "Webhook (POST)",
+            "payload": [
+                {
+                    "fieldName": "transactionHash",
+                    "fieldType": "Field"
+                },
+                {
+                    "fieldName": "trace",
+                    "fieldType": "Sub Field",
+                    "subPayloads": [
+                        {
+                            "fieldName": "action",
+                            "fieldType": "Sub Field",
+                            "subPayloads": [
+                                {
+                                    "fieldName": "to",
+                                    "fieldType": "Field"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "parameters": {
+                "url": "https://mywebhook.example/{transactionHash}/{args#src}"
+            }
+        }
+    ],
+    "targetMap": [
+        {
+            "name": "trace",
+            "operator": "Inspect",
+            "operatorParameters": [
+                {
+                    "name": "action",
+                    "operator": "Inspect",
+                    "operatorParameters": [
+                        {
+                            "name": "to",
+                            "value": "0x52243C97DD8556fe1092084c199aeFAD4c34fD89",
+                            "operator": "Equals (ignore case)"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "targetType": "Trace"
+}

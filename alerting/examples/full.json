@@ -1,0 +1,128 @@
+{
+    "targetType": "Event",
+    "targetMap": [
+        {
+            "name": "address",
+            "value": "0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
+            "operator": "Equals"
+        },
+        {
+            "name": "event",
+            "value": "Transfer",
+            "operator": "Equals (ignore case)"
+        },
+        {
+            "name": "args",
+            "operator": "Inspect",
+            "operatorParameters": [
+                {
+                    "name": "to",
+                    "value": "0x8d12A197cB00D4747a1fe03395095ce2A5CC6819",
+                    "operator": "Equals (ignore case)"
+                },
+                {
+                    "name": "value",
+                    "value": "999999",
+                    "operator": "Greater",
+                    "useScaledValue": true
+                }
+            ]
+        }
+    ],
+    "alerts": [
+        {
+            "type": "Slack",
+            "payload": [
+                {
+                    "fieldName": "transactionHash",
+                    "fieldType": "Field"
+                },
+                {
+                    "fieldName": "args",
+                    "fieldType": "Sub Field",
+                    "subPayloads": [
+                        {
+                            "fieldType": "Field",
+                            "fieldName": "to"
+                        }
+                    ]
+                }
+            ],
+            "parameters": {
+                "url": "https://hooks.slack.com/services/myslackhookurl",
+                "text": ":warning: There has been a new alert match",
+                "channel": "#alerting",
+                "username": "#blockchain-alerting-bot"
+            }
+        },
+        {
+            "type": "Email",
+            "payload": [
+                {
+                    "fieldName": "transactionHash",
+                    "fieldType": "Field"
+                },
+                {
+                    "fieldName": "args",
+                    "fieldType": "Sub Field",
+                    "subPayloads": [
+                        {
+                            "fieldType": "Field",
+                            "fieldName": "to"
+                        }
+                    ]
+                }
+            ],
+            "parameters": {
+                "recipients": [
+                    "user1@foobar.example",
+                    "user2@foobar.example"
+                ]
+            }
+        },
+        {
+            "type": "Webhook (GET)",
+            "parameters": {
+                "url": "https://mywebhook1.example/{transactionHash}/{args#to}"
+            },
+            "payload": [
+                {
+                    "fieldType": "Field",
+                    "fieldName": "transactionHash"
+                },
+                {
+                    "fieldType": "Sub Field",
+                    "fieldName": "args",
+                    "subPayloads": [
+                        {
+                            "fieldType": "Field",
+                            "fieldName": "to"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Webhook (POST)",
+            "parameters": {
+                "url": "https://mywebhook2.example"
+            },
+            "payload": [
+                {
+                    "fieldType": "Field",
+                    "fieldName": "transactionHash"
+                },
+                {
+                    "fieldType": "Sub Field",
+                    "fieldName": "args",
+                    "subPayloads": [
+                        {
+                            "fieldType": "Field",
+                            "fieldName": "to"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
