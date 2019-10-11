@@ -19,7 +19,10 @@
             "type": "integer"
         },
         "description": {
-            "type": ["string", "null"]
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "blockchain": {
             "type": "string"
@@ -71,19 +74,7 @@
                             "name": {
                                 "type": "string"
                             },
-                            "value": {
-                                "anyOf": [
-                                    {
-                                        "type": "string"
-                                    },
-                                    {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "string"
-                                        }
-                                    }
-                                ]
-                            },
+                            "value": {},
                             "additionalProperties": false,
                             "operator": {
                                 "type": "string",
@@ -114,19 +105,7 @@
                                         "useScaledValue": {
                                             "type": "boolean"
                                         },
-                                        "value": {
-                                            "anyOf": [
-                                                {
-                                                    "type": "string"
-                                                },
-                                                {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                }
-                                            ]
-                                        },
+                                        "value": {},
                                         "operator": {
                                             "type": "string",
                                             "enum": [
@@ -154,19 +133,7 @@
                                                     "name": {
                                                         "type": "string"
                                                     },
-                                                    "value": {
-                                                        "anyOf": [
-                                                            {
-                                                                "type": "string"
-                                                            },
-                                                            {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "string"
-                                                                }
-                                                            }
-                                                        ]
-                                                    },
+                                                    "value": {},
                                                     "operator": {
                                                         "type": "string",
                                                         "enum": [
@@ -180,62 +147,154 @@
                                                             "Equals any (ignore case)"
                                                         ]
                                                     }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "if": {
-                                        "properties": {
-                                            "operator": {
-                                                "enum": [
-                                                    "Inspect"
+                                                },
+                                                "allOf": [
+                                                    {
+                                                        "if": {
+                                                            "properties": {
+                                                                "operator": {
+                                                                    "enum": [
+                                                                        "Equals any",
+                                                                        "Equals any (ignore case)"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        "then": {
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "else": {
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 ]
                                             }
                                         }
                                     },
-                                    "then": {
-                                        "required": [
-                                            "operator",
-                                            "operatorParameters"
-                                        ],
-                                        "properties": {
-                                            "useScaledValue": {
-                                                "type": "null"
+                                    "allOf": [
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator": {
+                                                        "enum": [
+                                                            "Inspect"
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "required": [
+                                                    "operator",
+                                                    "operatorParameters"
+                                                ]
+                                            },
+                                            "else": {
+                                                "properties": {
+                                                    "operatorParameters": {
+                                                        "type": "null"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator": {
+                                                        "enum": [
+                                                            "Equals any",
+                                                            "Equals any (ignore case)"
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "value": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "else": {
+                                                "properties": {
+                                                    "value": {
+                                                        "type": "string"
+                                                    }
+                                                }
                                             }
                                         }
-                                    },
-                                    "else": {
-                                        "properties": {
-                                            "operatorParameters": {
-                                                "type": "null"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "if": {
-                            "properties": {
-                                "operator": {
-                                    "enum": [
-                                        "Inspect"
                                     ]
                                 }
                             }
                         },
-                        "then": {
-                            "required": [
-                                "operator",
-                                "operatorParameters"
-                            ]
-                        },
-                        "else": {
-                            "properties": {
-                                "operatorParameters": {
-                                    "type": "null"
+                        "allOf": [
+                            {
+                                "if": {
+                                    "properties": {
+                                        "operator": {
+                                            "enum": [
+                                                "Inspect"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "required": [
+                                        "operator",
+                                        "operatorParameters"
+                                    ]
+                                },
+                                "else": {
+                                    "properties": {
+                                        "operatorParameters": {
+                                            "type": "null"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "operator": {
+                                            "enum": [
+                                                "Equals any",
+                                                "Equals any (ignore case)"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "else": {
+                                    "properties": {
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
                                 }
                             }
-                        }
+                        ]
                     }
                 },
                 "alerts": {
