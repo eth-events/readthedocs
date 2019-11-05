@@ -7,9 +7,20 @@ The alerting feature of eth.events is capable of monitoring and alerting mostly 
 
 If you haven't checked yet, or just came here for the first time, you might `contact us <mailto:contact@eth.events>`__
 to get access to the alerting feature.
-In any other case you might already have access - then you should visit the `alerting dashboard <https://account.eth.events/alerting/dashboard/>`__.
 
-Here you can create, delete and edit alerts.
+Make sure you can access the alerting feature by opening the `Dashboard <https://account.eth.events/alerting/dashboard/>`__.
+You should see an (empty) list of alerting rules.
+
+Frontend Usage
+^^^^^^^^^^^^^^
+Just hit `+ New` on the `Dashboard page <https://account.eth.events/alerting/dashboard/>`__ to add a new alerting rule.
+Give it a name, select the network and configure when your data is considered *final*.
+See the [Example section](#examples) for the actual configuration.
+
+
+API Usage
+^^^^^^^^^
+You can access the API with cURL or your preferred REST library. See `the documentation <../endpoints>`__ for authorization details.
 
 Properties
 ^^^^^^^^^^
