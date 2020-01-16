@@ -5,9 +5,9 @@ Welcome!
 --------
 
 Within this tutorial you will learn how to retrieve and analyze data
-from the Ethereum Blockchain with the help of the eth.events SQL interface.
+from the Ethereum Blockchain with the help of the anyblock.tools SQL interface.
 
-We will show you how to retrieve data from eth.events using common SQL language.
+We will show you how to retrieve data from anyblock.tools using common SQL language.
 
 What you must know already
 --------------------------
@@ -17,7 +17,7 @@ page and setup our connection to the database.
 Remember that the subentities are stored using the Postgresql-Type **JSONB**.
 For more information on that, please take a look at the :ref:`ER model <sub-entities-jsonb>`.
 
-Basic eth.events SQL queries
+Basic anyblock.tools SQL queries
 ----------------------------
 
 Choose one of the databases available. All of them are encoded as the triple of:

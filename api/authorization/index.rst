@@ -1,8 +1,8 @@
 Authorization
 =============
-To access eth.events, no matter if you just want to use the free service or have a paid service agreement, you'll need to get an API Key.
+To access anyblock.tools, no matter if you just want to use the free service or have a paid service agreement, you'll need to get an API Key.
 
-You can register for a **free** account and get an API key right now at `https://account.eth.events/ <https://account.eth.events/api/token/>`_ in just a few seconds. Go ahead, I'll wait.
+You can register for a **free** account and get an API key right now at `https://account.anyblock.tools/ <https://account.anyblock.tools/api/token/>`_ in just a few seconds. Go ahead, I'll wait.
 
 Sending your API key
 --------------------
@@ -13,7 +13,7 @@ The fastest and most secure way to send your API key is via the *Authorization* 
 
 .. code:: bash
 
-  curl -X GET https://api.eth.events/status/ -H 'Authorization: Bearer $mytoken'
+  curl -X GET https://api.anyblock.tools/status/ -H 'Authorization: Bearer $mytoken'
 
 Basic Auth
 ^^^^^^^^^^
@@ -21,7 +21,7 @@ For compatibility reasons it's also possible to send the API key as your passwor
 
 .. code:: bash
 
-  curl -X GET https://api.eth.events/status/ -u '$myemail:$mytoken'
+  curl -X GET https://api.anyblock.tools/status/ -u '$myemail:$mytoken'
 
 Please keep in mind that you're supposed to send your **API key**, not your password here.
 
@@ -31,7 +31,7 @@ This is by far the least secure option, because your API key may end up in all s
 
 .. code:: bash
 
-  curl -X GET 'https://api.eth.events/status/?access_token=$mytoken'
+  curl -X GET 'https://api.anyblock.tools/status/?access_token=$mytoken'
 
 API key security
 ----------------

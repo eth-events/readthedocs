@@ -11,7 +11,7 @@ To learn more about the types in Elasticsearch, visit their `documentation <http
 
 
 
-Eth.events encoded types
+Anyblock.tools encoded types
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This are the types that represent a value on the blockchain. For some values, there are alternative encodings available.

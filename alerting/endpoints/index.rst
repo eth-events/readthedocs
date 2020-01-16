@@ -23,7 +23,7 @@ Get all Alerting Rules
 .. code:: bash
 
     curl -X GET \
-    https://api.eth.events/alerting/rules/ \
+    https://api.anyblock.tools/alerting/rules/ \
     -H 'Authorization: Bearer <your-token>'
 
 
@@ -32,7 +32,7 @@ Get a single Alerting Rule
 .. code:: bash
 
     curl -X GET \
-    https://api.eth.events/alerting/rules/<id>/ \
+    https://api.anyblock.tools/alerting/rules/<id>/ \
     -H 'Authorization: Bearer <your-token>'
 
 
@@ -41,7 +41,7 @@ Add an Alerting Rule
 .. code:: bash
 
     curl -X POST \
-    https://api.eth.events/alerting/rules/ \
+    https://api.anyblock.tools/alerting/rules/ \
     -H 'Authorization: Bearer <your-token>' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -61,7 +61,7 @@ Update an Alerting Rule
 .. code:: bash
 
     curl -X PUT \
-    https://api.eth.events/alerting/rules/<id>/ \
+    https://api.anyblock.tools/alerting/rules/<id>/ \
     -H 'Authorization: Bearer <your-token>' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -77,5 +77,5 @@ Delete an Alerting Rule
 .. code:: bash
 
     curl -X DELETE \
-    https://api.eth.events/alerting/rules/<id>/ \
+    https://api.anyblock.tools/alerting/rules/<id>/ \
     -H 'Authorization: Bearer <your-token>'

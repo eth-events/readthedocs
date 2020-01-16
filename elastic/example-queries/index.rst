@@ -2,9 +2,9 @@ Example queries
 ===============
 
 The following queries are meant to be a building block for
-your own eth.events queries.
+your own anyblock.tools queries.
 
-You also will need a registered eth.events API-Account in order to run the
+You also will need a registered anyblock.tools API-Account in order to run the
 REST calls. Keep in mind to replace the ``$mytoken`` variable in the ``cURL`` commands with your personal API token.
 
 .. contents::
@@ -57,7 +57,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-  https://api.eth.events/ethereum/ethereum/mainnet/es/block/search/ \
+  https://api.anyblock.tools/ethereum/ethereum/mainnet/es/block/search/ \
   -H 'Authorization: Bearer $mytoken' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -103,7 +103,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-  https://api.eth.events/ethereum/ethereum/mainnet/es/block/search/ \
+  https://api.anyblock.tools/ethereum/ethereum/mainnet/es/block/search/ \
   -H 'Authorization: Bearer $mytoken' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -153,7 +153,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-  https://api.eth.events/ethereum/ethereum/mainnet/es/tx/search/ \
+  https://api.anyblock.tools/ethereum/ethereum/mainnet/es/tx/search/ \
   -H 'Authorization: Bearer $mytoken' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -214,7 +214,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-  https://api.eth.events/ethereum/ethereum/mainnet/es/tx/search/ \
+  https://api.anyblock.tools/ethereum/ethereum/mainnet/es/tx/search/ \
   -H 'Authorization: Bearer $mytoken' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -276,7 +276,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-    https://api.eth.events/ethereum/ethereum/mainnet/es/tx/search/ \
+    https://api.anyblock.tools/ethereum/ethereum/mainnet/es/tx/search/ \
     -H 'Authorization: Bearer $mytoken' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -334,7 +334,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-    https://api.eth.events/ethereum/ethereum/mainnet/es/tx/search/ \
+    https://api.anyblock.tools/ethereum/ethereum/mainnet/es/tx/search/ \
     -H 'Authorization: Bearer $mytoken' \
     -H 'Content-Type: application/json' \
     -d '  {
@@ -390,7 +390,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-    https://api.eth.events/ethereum/ethereum/mainnet/es/log/search/ \
+    https://api.anyblock.tools/ethereum/ethereum/mainnet/es/log/search/ \
     -H 'Authorization: Bearer $mytoken' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -444,7 +444,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-    https://api.eth.events/ethereum/ethereum/mainnet/es/log/search/ \
+    https://api.anyblock.tools/ethereum/ethereum/mainnet/es/log/search/ \
     -H 'Authorization: Bearer $mytoken' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -499,7 +499,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    https://api.anyblock.tools/ethereum/ethereum/mainnet/es/event/search/ \
     -H 'Authorization: Bearer $mytoken' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -551,7 +551,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    https://api.anyblock.tools/ethereum/ethereum/mainnet/es/event/search/ \
     -H 'Authorization: Bearer $mytoken' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -626,7 +626,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-    https://api.eth.events/ethereum/ethereum/mainnet/es/event/search/ \
+    https://api.anyblock.tools/ethereum/ethereum/mainnet/es/event/search/ \
     -H 'Authorization: Bearer $mytoken' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -715,7 +715,7 @@ Execute the request with ``cURL``:
 .. code:: bash
 
   curl -X POST \
-    https://api.eth.events/ethereum/ethereum/mainnet/es/block,tx/search/ \
+    https://api.anyblock.tools/ethereum/ethereum/mainnet/es/block,tx/search/ \
     -H 'Authorization: Bearer d2560f14-1935-44e7-ad3e-a1718dc03bd2' \
     -H 'Content-Type: application/json' \
     -d '{

@@ -24,7 +24,7 @@ A simple query for the latest block would look like this:
 
 .. code:: bash
 
-  https://api.eth.events/es/block/search
+  https://api.anyblock.tools/es/block/search
 
 
 .. toctree::

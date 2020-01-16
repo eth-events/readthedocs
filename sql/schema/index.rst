@@ -14,7 +14,7 @@ The Calls (*call*) and Events (*event*) tables contain some of our enriched data
 To enrich the data, we use the Contract (*contract*) and Token (*token*) tables to match the contract addresses and extract relevant information from the ABI.
 As you can see, we are only able to make the data human-readable if we have the contract ABI.
 
-If you are interested in monitoring your own (non-public) contract - `contact us <mailto:contact@eth.events>`_ and we can integrate your ABI so that you can interpret the data for your business case more easily.
+If you are interested in monitoring your own (non-public) contract - `contact us <mailto:contact@anyblockanalytics.com>`_ and we can integrate your ABI so that you can interpret the data for your business case more easily.
 
 The arguments of either the *Contract*, the *Call* or the *Event* are encoded as a JSON array in their enclosing tables.
 In case of referencing a contract that would mean the constructor arguments at the time of creation.

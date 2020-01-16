@@ -1,4 +1,4 @@
-# Welcome to the documentation for eth.events
+# Welcome to the documentation for anyblock.tools
 
 The documentation is served at http://ethevents.readthedocs.io
 and is build with the Readthedocs / Sphinx python packages.

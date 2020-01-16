@@ -1,16 +1,11 @@
-.. eth.events documentation master file, created by
-   sphinx-quickstart on Wed May 30 15:50:23 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to eth.events's documentation!
+Welcome to anyblock.tools's documentation!
 ======================================
 
-eth.events is a hosted Ethereum API providing sophisticated support to search, filter and aggregate events from multiple Ethereum based blockchains. It is based on Elasticsearch and PostgreSQL.
+Anyblock.tools is a hosted Ethereum API providing sophisticated support to search, filter and aggregate events from multiple Ethereum based blockchains. It is based on Elasticsearch and PostgreSQL.
 
-Constructing a query and understanding what the eth.events server returns is the most important skill you need in order to get started with eth.events.
+Constructing a query and understanding what the anyblock.tools server returns is the most important skill you need in order to get started with anyblock.tools.
 
-If you are new to **ElasticSearch** and / or the **eth.events API**, you first should:
+If you are new to **ElasticSearch** and / or the **anyblock.tools API**, you first should:
 
 - Inform yourself about the :doc:`authorization <api/authorization/index>` methods
 - Read our :doc:`elastic developer tutorial <elastic/tutorials/query>`
@@ -27,9 +22,9 @@ You might also want to take a look at our **SQL** interface:
 You may also find here help for our **ALERTING** dashboard:
 
 - Visit :doc:`alerting <alerting/general/index>` to understand how our alerting works
-- `Contact us <mailto:contact@eth.events>`__ to get access to the alerting feature
+- `Contact us <mailto:contact@anyblockanalytics.com>`__ to get access to the alerting feature
 
-Please also visit our main `Website <https://eth.events>`__ and get in touch. We're always interested in what you're BUIDLing.
+Please also visit our main `Website <https://anyblock.tools>`__ and get in touch. We're always interested in what you're BUIDLing.
 
 .. toctree::
    :caption: Documentation Contents:

@@ -1,7 +1,7 @@
 Index endpoints
 ===============
 
-When interacting with the eth.events API, the base URL structure is always as follows:
+When interacting with the anyblock.tools API, the base URL structure is always as follows:
 
 /*$technology*/*$blockchain*/*$network*/*$interface*/...
 
@@ -13,4 +13,4 @@ So, for most users the base URL will be
 
 .. code:: bash
 
-  https://api.eth.events/ethereum/ethereum/mainnet/es/
+  https://api.anyblock.tools/ethereum/ethereum/mainnet/es/

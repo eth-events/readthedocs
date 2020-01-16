@@ -3,17 +3,17 @@ Alerting General Information
 
 Overview
 ^^^^^^^^
-The alerting feature of eth.events is capable of monitoring and alerting mostly all of the information that a blockchain emits.
+The alerting feature of anyblock.tools is capable of monitoring and alerting mostly all of the information that a blockchain emits.
 
-If you haven't checked yet, or just came here for the first time, you might `contact us <mailto:contact@eth.events>`__
+If you haven't checked yet, or just came here for the first time, you might `contact us <mailto:contact@anyblockanalytics.com>`__
 to get access to the alerting feature.
 
-Make sure you can access the alerting feature by opening the `Dashboard <https://account.eth.events/alerting/dashboard/>`__.
+Make sure you can access the alerting feature by opening the `Dashboard <https://account.anyblock.tools/alerting/dashboard/>`__.
 You should see an (empty) list of alerting rules.
 
 Frontend Usage
 ^^^^^^^^^^^^^^
-Just hit `+ New` on the `Dashboard page <https://account.eth.events/alerting/dashboard/>`__ to add a new alerting rule.
+Just hit `+ New` on the `Dashboard page <https://account.anyblock.tools/alerting/dashboard/>`__ to add a new alerting rule.
 Give it a name, select the network and configure when your data is considered *final*.
 See the [Example section](#examples) for the actual configuration.
 
