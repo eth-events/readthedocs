@@ -12,6 +12,7 @@ If you are new to **ElasticSearch** and / or the **anyblock.tools API**, you fir
 - Familiarise yourself with the `Elasticsearch Query DSL <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/query-dsl.html>`__.
 - Understand the elastic-schema and how events are :doc:`mapped <elastic/data-structure/index>`
 - Leverage our :doc:`example queries <elastic/example-queries/index>` and build your own queries.
+- Try all endpoints by yourself by using our `Swagger API Doc <http://apidocs.anyblock.tools/>`__.
 
 You might also want to take a look at our **SQL** interface:
 
