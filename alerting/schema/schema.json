@@ -18,6 +18,9 @@
         "maxConfirmationCount": {
             "type": "integer"
         },
+        "sendPendingAlerts": {
+            "type": "boolean"
+        },
         "description": {
             "type": [
                 "string",
@@ -49,13 +52,15 @@
                     "type": "string",
                     "enum": [
                         "Event",
+                        "Balance",
                         "Log",
                         "Transaction",
                         "Call",
                         "Contract",
                         "Token",
                         "Trace",
-                        "Method"
+                        "Method",
+                        "Block"
                     ]
                 },
                 "targetMap": {

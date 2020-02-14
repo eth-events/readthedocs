@@ -14,11 +14,15 @@ Target-Type
 ^^^^^^^^^^^
 The target-type can be any that is defined in the enumeration of this element. In that case it is currently list as:
 
+- ``Block``
 - ``Event``
 - ``Log``
 - ``Transaction``
 - ``Call``
 - ``Trace``
+- ``Balance``
+- ``Method``
+- ``Contract``
 
 (Omitted other types as they are not user-relevant)
 

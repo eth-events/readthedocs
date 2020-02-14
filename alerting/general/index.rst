@@ -43,6 +43,10 @@ Confirmation Count
 The block distance needed to trigger this alert. Using ``0`` means that it will triggered directly without waiting for a new block to confirm. 
 Be aware that a **reorg** on the blockchain might happen and thus the alert will trigger false-positive results - you should wait at least ``5`` blocks to be on the safe side.
 
+Send Pending Alerts
+"""""""""""""""""""
+If the confirmation count is not reached, you may allow this alert to send matches though. Every Block will then trigger a new pending match.
+
 JSON Configuration
 """"""""""""""""""
 The definition of an alert is currently checked against a `JSON schema <https://json-schema.org/>`__ in the background (and also before you save it).

@@ -47,6 +47,7 @@ Add an Alerting Rule
     -d '{
             "name": "Example Alerting Rule 0001",
             "maxConfirmationCount": 10,
+            "sendPendingAlerts": true,
             "technology": "ethereum",
             "blockchain": "ethereum",
             "network": "kovan",
