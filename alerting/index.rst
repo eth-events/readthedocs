@@ -2,7 +2,6 @@ Alerting
 ========
 
 .. toctree::
-   :caption: Foo
    :maxdepth: 2
 
    general/index
