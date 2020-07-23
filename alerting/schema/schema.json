@@ -1,441 +1,381 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://anyblock.tools/alertingConfig.json",
-    "type": "object",
-    "required": [
-        "blockchain",
-        "name",
-        "network",
-        "technology",
-        "config",
-        "maxConfirmationCount"
-    ],
-    "additionalProperties": true,
-    "properties": {
-        "version": {
-            "type": "integer"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://anyblock.tools/alertingConfig.json",
+  "type": "object",
+  "required": [
+    "blockchain",
+    "name",
+    "network",
+    "technology",
+    "config",
+    "maxConfirmationCount"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "integer"
+    },
+    "maxConfirmationCount": {
+      "type": "integer"
+    },
+    "sendPendingAlerts": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": ["string", "null"]
+    },
+    "blockchain": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "network": {
+      "type": "string"
+    },
+    "technology": {
+      "type": "string"
+    },
+    "config": {
+      "type": "object",
+      "required": ["targetType", "targetMap", "alerts"],
+      "additionalProperties": false,
+      "properties": {
+        "targetType": {
+          "type": "string",
+          "enum": [
+            "Event",
+            "Balance",
+            "Log",
+            "Transaction",
+            "Call",
+            "Contract",
+            "Token",
+            "Trace",
+            "Method",
+            "Block",
+            "Input",
+            "Output"
+          ]
         },
-        "maxConfirmationCount": {
-            "type": "integer"
-        },
-        "sendPendingAlerts": {
-            "type": "boolean"
-        },
-        "description": {
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "blockchain": {
-            "type": "string"
-        },
-        "name": {
-            "type": "string"
-        },
-        "network": {
-            "type": "string"
-        },
-        "technology": {
-            "type": "string"
-        },
-        "config": {
+        "targetMap": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "items": {
             "type": "object",
-            "required": [
-                "targetType",
-                "targetMap",
-                "alerts"
-            ],
+            "required": ["name", "operator"],
             "additionalProperties": false,
             "properties": {
-                "targetType": {
-                    "type": "string",
-                    "enum": [
-                        "Event",
-                        "Balance",
-                        "Log",
-                        "Transaction",
-                        "Call",
-                        "Contract",
-                        "Token",
-                        "Trace",
-                        "Method",
-                        "Block"
-                    ]
-                },
-                "targetMap": {
-                    "type": "array",
-                    "minItems": 1,
-                    "maxItems": 10,
-                    "uniqueItems": true,
-                    "items": {
+              "name": {
+                "type": "string"
+              },
+              "value": {},
+              "additionalProperties": false,
+              "operator": {
+                "type": "string",
+                "enum": [
+                  "Greater",
+                  "Greater or Equal",
+                  "Less",
+                  "Less or Equal",
+                  "Equals",
+                  "Equals (ignore case)",
+                  "Equals any",
+                  "Equals any (ignore case)",
+                  "Inspect"
+                ]
+              },
+              "operatorParameters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "operator"],
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "useScaledValue": {
+                      "type": "boolean"
+                    },
+                    "value": {},
+                    "operator": {
+                      "type": "string",
+                      "enum": [
+                        "Greater",
+                        "Greater or Equal",
+                        "Less",
+                        "Less or Equal",
+                        "Equals",
+                        "Equals (ignore case)",
+                        "Equals any",
+                        "Equals any (ignore case)",
+                        "Inspect"
+                      ]
+                    },
+                    "operatorParameters": {
+                      "type": "array",
+                      "items": {
                         "type": "object",
-                        "required": [
-                            "name",
-                            "operator"
-                        ],
-                        "additionalProperties": false,
+                        "required": ["name", "value", "operator"],
                         "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "value": {},
-                            "additionalProperties": false,
-                            "operator": {
-                                "type": "string",
-                                "enum": [
-                                    "Greater",
-                                    "Greater or Equal",
-                                    "Less",
-                                    "Less or Equal",
-                                    "Equals",
-                                    "Equals (ignore case)",
-                                    "Equals any",
-                                    "Equals any (ignore case)",
-                                    "Inspect"
-                                ]
-                            },
-                            "operatorParameters": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "required": [
-                                        "name",
-                                        "operator"
-                                    ],
-                                    "properties": {
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "useScaledValue": {
-                                            "type": "boolean"
-                                        },
-                                        "value": {},
-                                        "operator": {
-                                            "type": "string",
-                                            "enum": [
-                                                "Greater",
-                                                "Greater or Equal",
-                                                "Less",
-                                                "Less or Equal",
-                                                "Equals",
-                                                "Equals (ignore case)",
-                                                "Equals any",
-                                                "Equals any (ignore case)",
-                                                "Inspect"
-                                            ]
-                                        },
-                                        "operatorParameters": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "required": [
-                                                    "name",
-                                                    "value",
-                                                    "operator"
-                                                ],
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "value": {},
-                                                    "operator": {
-                                                        "type": "string",
-                                                        "enum": [
-                                                            "Greater",
-                                                            "Greater or Equal",
-                                                            "Less",
-                                                            "Less or Equal",
-                                                            "Equals",
-                                                            "Equals (ignore case)",
-                                                            "Equals any",
-                                                            "Equals any (ignore case)"
-                                                        ]
-                                                    }
-                                                },
-                                                "allOf": [
-                                                    {
-                                                        "if": {
-                                                            "properties": {
-                                                                "operator": {
-                                                                    "enum": [
-                                                                        "Equals any",
-                                                                        "Equals any (ignore case)"
-                                                                    ]
-                                                                }
-                                                            }
-                                                        },
-                                                        "then": {
-                                                            "properties": {
-                                                                "value": {
-                                                                    "type": "array",
-                                                                    "items": {
-                                                                        "type": "string"
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        "else": {
-                                                            "properties": {
-                                                                "value": {
-                                                                    "type": "string"
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "allOf": [
-                                        {
-                                            "if": {
-                                                "properties": {
-                                                    "operator": {
-                                                        "enum": [
-                                                            "Inspect"
-                                                        ]
-                                                    }
-                                                }
-                                            },
-                                            "then": {
-                                                "required": [
-                                                    "operator",
-                                                    "operatorParameters"
-                                                ]
-                                            },
-                                            "else": {
-                                                "properties": {
-                                                    "operatorParameters": {
-                                                        "type": "null"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "if": {
-                                                "properties": {
-                                                    "operator": {
-                                                        "enum": [
-                                                            "Equals any",
-                                                            "Equals any (ignore case)"
-                                                        ]
-                                                    }
-                                                }
-                                            },
-                                            "then": {
-                                                "properties": {
-                                                    "value": {
-                                                        "type": "array",
-                                                        "items": {
-                                                            "type": "string"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "else": {
-                                                "properties": {
-                                                    "value": {
-                                                        "type": "string"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
+                          "name": {
+                            "type": "string"
+                          },
+                          "value": {},
+                          "operator": {
+                            "type": "string",
+                            "enum": [
+                              "Greater",
+                              "Greater or Equal",
+                              "Less",
+                              "Less or Equal",
+                              "Equals",
+                              "Equals (ignore case)",
+                              "Equals any",
+                              "Equals any (ignore case)"
+                            ]
+                          }
                         },
                         "allOf": [
-                            {
-                                "if": {
-                                    "properties": {
-                                        "operator": {
-                                            "enum": [
-                                                "Inspect"
-                                            ]
-                                        }
-                                    }
-                                },
-                                "then": {
-                                    "required": [
-                                        "operator",
-                                        "operatorParameters"
-                                    ]
-                                },
-                                "else": {
-                                    "properties": {
-                                        "operatorParameters": {
-                                            "type": "null"
-                                        }
-                                    }
+                          {
+                            "if": {
+                              "properties": {
+                                "operator": {
+                                  "enum": [
+                                    "Equals any",
+                                    "Equals any (ignore case)"
+                                  ]
                                 }
+                              }
                             },
-                            {
-                                "if": {
-                                    "properties": {
-                                        "operator": {
-                                            "enum": [
-                                                "Equals any",
-                                                "Equals any (ignore case)"
-                                            ]
-                                        }
-                                    }
-                                },
-                                "then": {
-                                    "properties": {
-                                        "value": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                },
-                                "else": {
-                                    "properties": {
-                                        "value": {
-                                            "type": "string"
-                                        }
-                                    }
+                            "then": {
+                              "properties": {
+                                "value": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
                                 }
+                              }
+                            },
+                            "else": {
+                              "properties": {
+                                "value": {
+                                  "type": "string"
+                                }
+                              }
                             }
+                          }
                         ]
+                      }
                     }
-                },
-                "alerts": {
-                    "type": "array",
-                    "minItems": 1,
-                    "maxItems": 10,
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "type",
-                            "parameters"
-                        ],
+                  },
+                  "allOf": [
+                    {
+                      "if": {
                         "properties": {
-                            "type": {
-                                "type": "string",
-                                "enum": [
-                                    "Webhook (GET)",
-                                    "Webhook (POST)",
-                                    "Email",
-                                    "Slack"
-                                ]
-                            },
-                            "parameters": {
-                                "type": "object"
-                            },
-                            "payload": {
-                                "type": "array",
-                                "maxItems": 10,
-                                "uniqueItems": true,
-                                "items": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "fieldType": {
-                                            "type": "string",
-                                            "enum": [
-                                                "Field",
-                                                "Sub Field"
-                                            ]
-                                        },
-                                        "fieldName": {
-                                            "type": "string"
-                                        },
-                                        "subPayloads": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "properties": {
-                                                    "fieldType": {
-                                                        "type": "string",
-                                                        "enum": [
-                                                            "Field",
-                                                            "Sub Field"
-                                                        ]
-                                                    },
-                                                    "fieldName": {
-                                                        "type": "string"
-                                                    },
-                                                    "subPayloads": {
-                                                        "type": "array",
-                                                        "required": [
-                                                            "fieldName",
-                                                            "fieldType"
-                                                        ],
-                                                        "items": {
-                                                            "type": "object",
-                                                            "additionalProperties": false,
-                                                            "properties": {
-                                                                "fieldType": {
-                                                                    "type": "string",
-                                                                    "enum": [
-                                                                        "Field"
-                                                                    ]
-                                                                },
-                                                                "fieldName": {
-                                                                    "type": "string"
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                },
-                                                "if": {
-                                                    "properties": {
-                                                        "fieldType": {
-                                                            "enum": [
-                                                                "Sub Field"
-                                                            ]
-                                                        }
-                                                    }
-                                                },
-                                                "then": {
-                                                    "required": [
-                                                        "fieldName",
-                                                        "subPayloads"
-                                                    ]
-                                                },
-                                                "else": {
-                                                    "properties": {
-                                                        "subPayloads": {
-                                                            "type": "null"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "if": {
-                                        "properties": {
-                                            "fieldType": {
-                                                "enum": [
-                                                    "Sub Field"
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "then": {
-                                        "required": [
-                                            "fieldName",
-                                            "subPayloads"
-                                        ]
-                                    },
-                                    "else": {
-                                        "properties": {
-                                            "subPayloads": {
-                                                "type": "null"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                          "operator": {
+                            "enum": ["Inspect"]
+                          }
                         }
+                      },
+                      "then": {
+                        "required": ["operator", "operatorParameters"]
+                      },
+                      "else": {
+                        "properties": {
+                          "operatorParameters": {
+                            "type": "null"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "operator": {
+                            "enum": ["Equals any", "Equals any (ignore case)"]
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "else": {
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
+                  ]
                 }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "operator": {
+                      "enum": ["Inspect"]
+                    }
+                  }
+                },
+                "then": {
+                  "required": ["operator", "operatorParameters"]
+                },
+                "else": {
+                  "properties": {
+                    "operatorParameters": {
+                      "type": "null"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "operator": {
+                      "enum": ["Equals any", "Equals any (ignore case)"]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "alerts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "required": ["type", "parameters"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["Webhook (GET)", "Webhook (POST)", "Email", "Slack"]
+              },
+              "parameters": {
+                "type": "object"
+              },
+              "payload": {
+                "type": "array",
+                "maxItems": 10,
+                "uniqueItems": true,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "fieldType": {
+                      "type": "string",
+                      "enum": ["Field", "Sub Field"]
+                    },
+                    "fieldName": {
+                      "type": "string"
+                    },
+                    "subPayloads": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "fieldType": {
+                            "type": "string",
+                            "enum": ["Field", "Sub Field"]
+                          },
+                          "fieldName": {
+                            "type": "string"
+                          },
+                          "subPayloads": {
+                            "type": "array",
+                            "required": ["fieldName", "fieldType"],
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "fieldType": {
+                                  "type": "string",
+                                  "enum": ["Field"]
+                                },
+                                "fieldName": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "if": {
+                          "properties": {
+                            "fieldType": {
+                              "enum": ["Sub Field"]
+                            }
+                          }
+                        },
+                        "then": {
+                          "required": ["fieldName", "subPayloads"]
+                        },
+                        "else": {
+                          "properties": {
+                            "subPayloads": {
+                              "type": "null"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "if": {
+                    "properties": {
+                      "fieldType": {
+                        "enum": ["Sub Field"]
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": ["fieldName", "subPayloads"]
+                  },
+                  "else": {
+                    "properties": {
+                      "subPayloads": {
+                        "type": "null"
+                      }
+                    }
+                  }
+                }
+              }
             }
+          }
         }
+      }
     }
+  }
 }

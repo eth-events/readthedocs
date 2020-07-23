@@ -21,6 +21,8 @@ The target-type can be any that is defined in the enumeration of this element. I
 - ``Call``
 - ``Trace``
 - ``Balance``
+- ``Input``
+- ``Output``
 - ``Method``
 - ``Contract``
 
