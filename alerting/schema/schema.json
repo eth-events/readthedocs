@@ -288,9 +288,6 @@
               "parameters": {
                 "type": "object"
               },
-              "message": {
-                "type": "string"
-              },
               "payload": {
                 "type": "array",
                 "maxItems": 10,
