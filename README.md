@@ -1,3 +1,4 @@
+# DEPRECATED
 # Welcome to the documentation for anyblock.tools
 
 The documentation is served at http://ethevents.readthedocs.io
